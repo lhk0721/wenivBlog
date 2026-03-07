@@ -1,8 +1,10 @@
+import styles from './PageContainer.module.css'
+
 function PageContainer({ title, subtitle, children }) {
     return (
-        <section className="page-container">
+        <section className={styles.pageContainer}>
             {(title || subtitle) && (
-                <header className="page-header">
+                <header className={styles.pageHeader}>
                     {title && <h1>{title}</h1>}
                     {subtitle && <p>{subtitle}</p>}
                 </header>
