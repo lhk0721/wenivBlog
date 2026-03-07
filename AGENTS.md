@@ -63,17 +63,17 @@
 - 빌드: `npm run build`
 
 ### 도메인 규칙
-- 도메인별 화면/경로/네이밍은 문서에 명시된 기준을 우선
-- 도메인 특화 구조는 일반 가이드에 예시로만 기록하고, 필요 시 프로젝트 문서에서 확정
+- 블로그 서비스 화면은 `Home, Login, Register, Mypage, Post-View, Post-Write, Alert`를 기본 페이지로 사용
+- 위 페이지 구조는 `winivBlog` 프로젝트 전용 규칙이며 다른 프로젝트에는 기본 적용하지 않음
 
 ## 10) 작업별 상세 가이드 연결
 - 프론트엔드: `docs/commands/frontend.md`
 - 백엔드: `docs/commands/backend.md`
 - 배포: `docs/commands/deploy.md`
 - 코드리뷰: `docs/commands/review.md`
-- 초기 세팅(일반): `docs/commands/initial-setup.md`
+- 이 프로젝트 초기 세팅: `docs/commands/winivblog-initial-setup.md`
 
 ## 11) 기본 실행 규칙
-- 사용자가 "초기 구조 만들어줘", "초기 세팅 해줘", "라우터 붙여줘"와 같은 요청을 하면, `docs/commands/initial-setup.md`를 우선 적용
-- 동일 요구사항 재지시가 없어도 일반 초기 세팅 가이드를 기준으로 스캐폴딩
-- 사용자가 구조를 명시하면 사용자 요구를 우선
+- 사용자가 "초기 구조 만들어줘", "초기 세팅 해줘", "라우터 붙여줘"와 같은 요청을 하면, 이미 정의된 초기 세팅 문서를 우선 적용
+- 동일 요구사항 재지시가 없어도 `docs/commands/winivblog-initial-setup.md` 기준으로 스캐폴딩
+- 단, 사용자가 다른 구조를 명시하면 사용자 요구를 우선

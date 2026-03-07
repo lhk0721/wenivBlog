@@ -87,3 +87,7 @@ textarea,
 select {
     font: inherit;
 }
+
+html{
+    font-size: 62.5%;
+}

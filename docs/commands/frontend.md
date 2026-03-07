@@ -27,3 +27,15 @@
 - UI/동작 변경점
 - 검증 결과
 
+## 마크업
+winivBlog\docs\React&Node - Blog.pdf
+페이지별 정보
+1. 더미
+2. Assets
+3. Home
+4. Login
+5. Register
+6. Mypage
+7. Post-view
+8. Post-Write
+9. Alert
