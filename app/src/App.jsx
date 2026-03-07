@@ -1,10 +1,12 @@
 
-function App() {
+import { BrowserRouter } from 'react-router-dom'
+import AppRouter from './routes/AppRouter.jsx'
 
+function App() {
     return (
-        <>
-            Hello Vite-React!
-        </>
+        <BrowserRouter>
+            <AppRouter />
+        </BrowserRouter>
     )
 }
 

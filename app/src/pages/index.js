@@ -1,0 +1,7 @@
+export { default as HomePage } from './home/HomePage.jsx'
+export { default as LoginPage } from './login/LoginPage.jsx'
+export { default as RegisterPage } from './register/RegisterPage.jsx'
+export { default as MyPage } from './mypage/MyPage.jsx'
+export { default as PostViewPage } from './post-view/PostViewPage.jsx'
+export { default as PostWritePage } from './post-write/PostWritePage.jsx'
+export { default as AlertPage } from './alert/AlertPage.jsx'
