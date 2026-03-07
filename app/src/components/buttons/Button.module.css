@@ -1,54 +1,115 @@
-.btn{
-    width: 9.6rem;
-    height: 4rem;
-
+.base{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
 
+    color: var(--color-text-primary);
     font-size: var(--font-size-sm);
     border-radius: var(--radius-md);
-
     transition: all 0.15s ease;
 }
 
+/* variant */
 .primary{
-    border: solid 1px var(--color-btn-primary-border);
-    background-color: var(--color-btn-primary-bg);
+    border: solid 1px var(--color-action-primary);
+    background-color: var(--color-bg-canvas);
 }
 
 .negative{
-    border: solid 1px var(--color-btn-negative-border);
-    background-color: var(--color-btn-negative-bg);
+    border: solid 1px var(--color-action-danger);
+    background-color: var(--color-bg-subtle);
 }
 
+.top{
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding-bottom: 9px;
+    box-sizing: border-box;
+    border: solid 1px var(--color-action-primary);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    background-color: var(--color-action-primary);
+    color: var(--color-text-inverse);
+    font-size: var(--font-size-md);
+}
+
+
+.round{
+    border: solid 1px var(--color-action-primary);
+    border-radius: var(--radius-full);
+    background-color: var(--color-action-primary);
+    color: var(--color-text-inverse);
+}
+
+/* size */
+.sm{
+    width: 4rem;
+    height: 4rem;
+}
+
+.md{
+    width: 9.6rem;
+    height: 4rem;
+}
+
+.lg{
+    width: 12rem;
+    height: 4rem;
+}
+
+.xlg{
+    width: 6.4rem;
+    height: 6.4rem;
+}
+
+.xxlg{
+    width: 39.2rem;
+    height: 4.8rem;
+}
+
+.top{
+    width: 6.4rem;
+    height: 6.4rem;
+}
+
+/* icon */
 .icon{
     width: 1.4rem;
     height: 1.4rem;
 }
 
-.btn:hover{
+.topIcon{
+    width: 2rem;
+    height: 1rem;
+}
+
+.roundIcon{
+    width: 2.4rem;
+    height: 2.4rem
+}
+
+.base:hover{
     transform: translateY(-1px);
 }
 
 .primary:hover{
-    box-shadow: 0 0 2px var(--color-btn-primary-border-focus-shadow);
+    box-shadow: 0 0 2px var(--color-action-primary);
 }
 
 .negative:hover{
-    box-shadow: 0 0 2px var(--color-btn-negative-border-focus-shadow);
+    box-shadow: 0 0 2px var(--color-action-danger);
 }
 
-.btn:active{
-    color: var(--color-white);
+.base:active{
+    color: var(--color-text-inverse);
     transform: translateY(1px);
 }
 
 .primary:active{
-    background-color: var(--color-btn-primary-bg-hover);
+    background-color: var(--color-action-primary);
 }
 
 .negative:active{
-    background-color: var(--color-btn-negative-bg-hover);
+    background-color: var(--color-action-danger);
 }
