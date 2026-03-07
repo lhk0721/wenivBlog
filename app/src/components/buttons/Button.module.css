@@ -1,0 +1,54 @@
+.btn{
+    width: 9.6rem;
+    height: 4rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+
+    font-size: var(--font-size-sm);
+    border-radius: var(--radius-md);
+
+    transition: all 0.15s ease;
+}
+
+.primary{
+    border: solid 1px var(--color-btn-primary-border);
+    background-color: var(--color-btn-primary-bg);
+}
+
+.negative{
+    border: solid 1px var(--color-btn-negative-border);
+    background-color: var(--color-btn-negative-bg);
+}
+
+.icon{
+    width: 1.4rem;
+    height: 1.4rem;
+}
+
+.btn:hover{
+    transform: translateY(-1px);
+}
+
+.primary:hover{
+    box-shadow: 0 0 2px var(--color-btn-primary-border-focus-shadow);
+}
+
+.negative:hover{
+    box-shadow: 0 0 2px var(--color-btn-negative-border-focus-shadow);
+}
+
+.btn:active{
+    color: var(--color-white);
+    transform: translateY(1px);
+}
+
+.primary:active{
+    background-color: var(--color-btn-primary-bg-hover);
+}
+
+.negative:active{
+    background-color: var(--color-btn-negative-bg-hover);
+}
