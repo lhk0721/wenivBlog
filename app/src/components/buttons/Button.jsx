@@ -1,10 +1,10 @@
 import styles from './Button.module.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 /**
  * @typedef {Object} ButtonProps
- * @property {'primary' | 'negative'} variant 버튼 색상 테마
- * @property {'sm' | 'md' | 'lg' | 'xlg' | 'xxlg' | 'top'} size 버튼 크기
+ * @property {'primary' | 'negative' | 'subtle-primary' | 'subtle-negative' | 'round'} variant 버튼 스타일 테마
+ * @property {'sm' | 'md' | 'lg' | 'xlg' | 'xxlg' | 'top'} size 버튼 크기/레이아웃
  * @property {string} [text] 버튼 텍스트
  * @property {string} [icon] 기본 아이콘 이미지 경로
  * @property {string} [activeIcon] 눌림 상태 아이콘 이미지 경로
@@ -31,6 +31,23 @@ export default function Button({
     className = ''
 }) {
     const [isPressed, setIsPressed] = useState(false)
+
+    useEffect(() => {
+        if (!isPressed) return
+
+        const releasePress = () => setIsPressed(false)
+
+        window.addEventListener('mouseup', releasePress)
+        window.addEventListener('touchend', releasePress)
+        window.addEventListener('touchcancel', releasePress)
+
+        return () => {
+            window.removeEventListener('mouseup', releasePress)
+            window.removeEventListener('touchend', releasePress)
+            window.removeEventListener('touchcancel', releasePress)
+        }
+    }, [isPressed])
+
     const currentIcon = isPressed && activeIcon ? activeIcon : icon
     const iconClass = size === 'top'
         ? styles.topIcon
@@ -47,7 +64,6 @@ export default function Button({
             className={`${styles.base} ${styles[variant]} ${styles[size]} ${className}`}
             onMouseDown={() => setIsPressed(true)}
             onMouseUp={() => setIsPressed(false)}
-            onMouseLeave={() => setIsPressed(false)}
             onTouchStart={() => setIsPressed(true)}
             onTouchEnd={() => setIsPressed(false)}
             onTouchCancel={() => setIsPressed(false)}

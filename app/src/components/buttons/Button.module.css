@@ -21,6 +21,14 @@
     background-color: var(--color-bg-subtle);
 }
 
+.subtle-primary,
+.subtle-negative{
+    border: none;
+    background-color: var(--color-bg-subtle);
+}
+
+
+
 .top{
     flex-direction: column;
     justify-content: flex-end;
@@ -93,11 +101,14 @@
     transform: translateY(-1px);
 }
 
-.primary:hover{
+.primary:hover,
+.round:hover,
+.subtle-primary:hover{
     box-shadow: 0 0 2px var(--color-action-primary);
 }
 
-.negative:hover{
+.negative:hover,
+.subtle-negative:hover{
     box-shadow: 0 0 2px var(--color-action-danger);
 }
 
@@ -106,10 +117,12 @@
     transform: translateY(1px);
 }
 
-.primary:active{
+.primary:active,
+.subtle-primary:active{
     background-color: var(--color-action-primary);
 }
 
-.negative:active{
+.negative:active,
+.subtle-negative:active{
     background-color: var(--color-action-danger);
 }
