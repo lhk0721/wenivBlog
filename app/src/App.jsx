@@ -24,8 +24,10 @@ import Categories from './components/categories/Categories.jsx'
 
 // Author
 import Author from './components/author/Author.jsx'
-
 import profile from './assets/images/profile.png'
+
+// Profile
+import Profile from './components/Profile/Profile.jsx'
 
 const categories = [
     { id: 1, name: "Life" },
@@ -116,6 +118,11 @@ function App() {
                 image = {profile}
                 author='이현규'
                 publishDate='2022.01.01'
+            />
+
+            <Profile
+                image={profile}
+                editable={true}
             />
 
         </BrowserRouter>

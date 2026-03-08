@@ -1,0 +1,17 @@
+.container{
+    width: 12rem;
+    height: 12rem;
+    position: relative;
+}
+
+.proFileImg{
+    width: 12rem;
+    height: 12rem;
+    border-radius: var(--radius-full);
+}
+
+.editButton{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
