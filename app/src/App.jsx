@@ -19,8 +19,18 @@ import Image from './assets/icons/icon-image.svg'
 import Input from './components/inputs/Input.jsx';
 import InputPassword from './components/inputs/InputPassword.jsx'
 
+// categories
+import Categories from './components/categories/Categories.jsx'
 
-
+const categories = [
+    { id: 1, name: "Life" },
+    { id: 2, name: "Style" },
+    { id: 3, name: "Tech" },
+    { id: 4, name: "Music" },
+    { id: 5, name: "Sport" },
+    { id: 6, name: "Photo" },
+    { id: 7, name: "Develop" }
+]
 
 function App() {
     return (
@@ -91,6 +101,12 @@ function App() {
                 name='password'
                 placeholder='비밀번호를 입력해 주세요'
             />
+
+            <Categories
+                categories={categories}
+                theme='positive'
+            />
+
         </BrowserRouter>
     )
 }
