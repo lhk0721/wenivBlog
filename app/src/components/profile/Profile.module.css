@@ -1,13 +1,30 @@
 .container{
-    width: 12rem;
-    height: 12rem;
     position: relative;
 }
 
-.proFileImg{
+.containerLg{
     width: 12rem;
     height: 12rem;
+}
+
+.containerSm{
+    /* TODO: 헤더용 sm 컨테이너 크기 조정 */
+    width: 4rem;
+    height: 4rem;
+}
+
+.proFileImg{
     border-radius: var(--radius-full);
+}
+
+.profileImgLg{
+    width: 12rem;
+    height: 12rem;
+}
+
+.profileImgSm{
+    width: 4.4rem;
+    height: 4.4rem;
 }
 
 .editButton{

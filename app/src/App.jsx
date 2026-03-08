@@ -1,4 +1,3 @@
-
 import { BrowserRouter } from 'react-router-dom'
 import AppRouter from './routes/AppRouter.jsx'
 import './assets/styles/variables.css'
@@ -28,6 +27,11 @@ import profile from './assets/images/profile.png'
 
 // Profile
 import Profile from './components/Profile/Profile.jsx'
+
+// Header
+import Header from './components/header/Header.jsx'
+
+
 
 const categories = [
     { id: 1, name: "Life" },
@@ -123,6 +127,10 @@ function App() {
             <Profile
                 image={profile}
                 editable={true}
+            />
+
+            <Header 
+                isLoggedIn={true}
             />
 
         </BrowserRouter>
