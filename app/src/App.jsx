@@ -22,6 +22,11 @@ import InputPassword from './components/inputs/InputPassword.jsx'
 // categories
 import Categories from './components/categories/Categories.jsx'
 
+// Author
+import Author from './components/author/Author.jsx'
+
+import profile from './assets/images/profile.png'
+
 const categories = [
     { id: 1, name: "Life" },
     { id: 2, name: "Style" },
@@ -105,6 +110,12 @@ function App() {
             <Categories
                 categories={categories}
                 theme='positive'
+            />
+
+            <Author
+                image = {profile}
+                author='이현규'
+                publishDate='2022.01.01'
             />
 
         </BrowserRouter>
