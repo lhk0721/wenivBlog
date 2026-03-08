@@ -1,5 +1,5 @@
 
-import { BrowserRouter, useSearchParams } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import AppRouter from './routes/AppRouter.jsx'
 import './assets/styles/variables.css'
 import './assets/styles/global.css'
@@ -17,8 +17,7 @@ import Image from './assets/icons/icon-image.svg'
 
 // input
 import Input from './components/inputs/Input.jsx';
-import { useState } from 'react'
-const [inputValue, setInputValue] = useState('')
+import InputPassword from './components/inputs/InputPassword.jsx'
 
 
 
@@ -75,16 +74,22 @@ function App() {
             />
 
             <Input
-                type={'password'}
-                name={'PW'}
-                id={'Password'}
-                value={inputValue}
-                placeholder={'6+ characters'}
-                onChange={(e)=>setInputValue(e.target.value)}
-                maxLength={8}
-                autoComplete={'new-password'}
-                className={`${styles.base}`}
-                required={required}
+                label='Email'
+                type='email'
+                name='email'
+                placeholder='이메일을 입력해 주세요'
+            />
+
+            <Input
+                label='Username'
+                name='username'
+                placeholder='사용자 이름을 입력해 주세요'
+            />
+
+            <InputPassword
+                label='Password'
+                name='password'
+                placeholder='비밀번호를 입력해 주세요'
             />
         </BrowserRouter>
     )

@@ -91,3 +91,7 @@ select {
 html{
     font-size: 62.5%;
 }
+
+input{
+    outline: none;
+}
