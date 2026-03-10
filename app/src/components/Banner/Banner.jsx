@@ -1,15 +1,40 @@
 import Styles from './Banner.module.css'
+/*variant type
+1. primary
+2. auth
+3. post
+*/ 
 
-export default function Banner(){
-    return(<div className={Styles.banner}>
-        <div className={Styles.bannerContent}>
-            <div className={Styles.textBox}>
-                <p className={Styles.divider}>
-                React & Node
-                </p>
-                <h1>My BLOG</h1>
-                <p className={Styles.description}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste error quibusdam ipsa quis quidem doloribus eos, dolore ea iusto impedit!</p>
-            </div>
+/*postDate
+Date 객체임
+*/ 
+
+
+export default function Banner({variant, postDay, postMonth, postWeekday}){
+    const primary = variant === 'primary';
+    const post = variant === 'post'
+
+    return(
+        <div className={Styles.banner}>
+            {primary&& 
+            <div className={Styles.bannerContent}>
+                <div className={Styles.textBox}>
+                    <p className={Styles.divider}>
+                    React & Node
+                    </p>
+                    <h2>My BLOG</h2>
+                    <p className={Styles.description}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste error quibusdam ipsa quis quidem doloribus eos, dolore ea iusto impedit!</p>
+                </div>
+            </div>}
+            {post && 
+            <div className={Styles.bannerContent}>
+                <div className={Styles.textBox}>
+                    <p className={Styles.postDay}>{postDay}</p>
+                    <p className={Styles.postMonth}>{postMonth}</p>
+                    <p className={Styles.postWeekday}>{postWeekday}</p>
+                </div>
+            </div>}
         </div>
-    </div>)
+
+    )
 }

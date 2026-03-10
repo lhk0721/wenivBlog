@@ -140,7 +140,12 @@ function App() {
 
             <Footer/>
 
-            <Banner/>
+            <Banner 
+                variant={'post'}
+                postDay={'Apr.'}
+                postMonth={'24'}
+                postWeekday={'Sunday'}
+            />
 
         </BrowserRouter>
     )

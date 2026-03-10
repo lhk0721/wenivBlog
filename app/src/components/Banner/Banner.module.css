@@ -38,7 +38,7 @@
     font-size: var(--font-size-lg-plus);
 }
 
-h1{
+h2{
     margin-top: 0.8rem;
     margin-bottom: 2.5rem;
     font-size: var(--font-size-xxxl);
@@ -49,4 +49,22 @@ h1{
     width: 28.8rem;
     font-size: var(--font-size-xs);
     line-height: var(--line-height-sparse);
+}
+
+.postDay{
+    margin: 0;
+    font-size: var(--font-size-xxxl);
+    font-weight: var(--font-weight-bold);
+}
+.postMonth{
+    margin: 0;
+    font-size: var(--font-size-xxxxl);
+    font-weight: var(--font-weight-bold);
+}
+
+
+.postWeekday{
+    margin: 0;
+    font-size: var(--font-size-xxxl);
+    font-weight: var(--font-weight-bold);
 }
