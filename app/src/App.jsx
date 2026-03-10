@@ -126,7 +126,7 @@ function App() {
             <Author
                 image = {profile}
                 author='이현규'
-                publishDate='2022.01.01'
+                dateString='2022-01-01'
             />
 
             <Profile

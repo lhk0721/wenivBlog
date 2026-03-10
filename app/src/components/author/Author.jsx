@@ -1,6 +1,7 @@
 import Styles from './Author.module.css'
 
-export default function Author({image, author,publishDate}){
+export default function Author({image, author,dateString}){
+    const postDate = dateString.replaceAll('-','.');
 
     return(
         <div className={Styles.meta}>
@@ -11,7 +12,7 @@ export default function Author({image, author,publishDate}){
             />
             <span>{author}</span>
             <span className={Styles.divider}>|</span>
-            <span>{publishDate}</span>
+            <span>{postDate}</span>
         </div>
     )
 }
