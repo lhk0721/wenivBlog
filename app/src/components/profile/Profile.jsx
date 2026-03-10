@@ -2,6 +2,7 @@ import Styles from './Profile.module.css'
 import noImg from '../../assets/images/noimg.png'
 import Button from '../buttons/Button'
 import imageIcon from '../../assets/icons/icon-image.svg'
+import { useAuth } from '../../contexts/AuthContext.jsx'
 
 /**
  * 프로필 이미지를 표시하고, 편집 가능 시 편집 버튼을 노출합니다.
@@ -14,8 +15,10 @@ import imageIcon from '../../assets/icons/icon-image.svg'
  * @returns {JSX.Element}
  */
 export default function Profile({ image, editable = false, size = 'lg', className = '' }){
+    const { currentUser } = useAuth()
     const isSm = size === 'sm'
     const isEditable = isSm ? false : editable
+    const resolvedImage = image || currentUser?.profileImage || noImg
     const containerClass =
         size === 'sm'
             ? Styles.containerSm
@@ -32,7 +35,7 @@ export default function Profile({ image, editable = false, size = 'lg', classNam
     return(
         <div className={`${Styles.container} ${containerClass} ${className}`}>
             <img 
-                src={image || noImg} 
+                src={resolvedImage} 
                 alt="Profile img" 
                 className={`${Styles.proFileImg} ${imageClass}`}
             />

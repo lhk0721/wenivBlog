@@ -23,7 +23,6 @@ import Categories from './components/categories/Categories.jsx'
 
 // Author
 import Author from './components/author/Author.jsx'
-import profile from './assets/images/profile.png'
 
 // Profile
 import Profile from './components/Profile/Profile.jsx'
@@ -39,6 +38,9 @@ import Banner from './components/Banner/Banner.jsx'
 
 // About
 import About from './components/about/About.jsx'
+import Card from './components/card/Card.jsx'
+import { AuthProvider } from './contexts/AuthContext.jsx'
+import postImg1 from './assets/images/post-img1.png'
 
 
 const categories = [
@@ -51,110 +53,120 @@ const categories = [
     { id: 7, name: "Develop" }
 ]
 
+const mockArticle = {
+    id: 1,
+    dateString: '2026-03-10',
+    title: 'Card 컴포넌트 CSS 테스트용 게시글 제목입니다.',
+    thumbnail: postImg1,
+    Categories: [
+        { id: 1, name: 'Life' },
+        { id: 3, name: 'Tech' },
+        { id: 7, name: 'Develop' },
+    ],
+    description: '카드 레이아웃, 이미지 비율, 텍스트 줄바꿈, 카테고리 간격을 확인하기 위한 테스트용 게시글입니다.',
+}
+
 function App() {
     return (
-        <BrowserRouter>
-            <AppRouter />
-            <Button
-                variant = 'primary'
-                size = 'md'
-                text = 'Save'
-                icon = {icon}
-                activeIcon={activeicon}
+        <AuthProvider>
+            <BrowserRouter>
+                <AppRouter />
+                <Button
+                    variant = 'primary'
+                    size = 'md'
+                    text = 'Save'
+                    icon = {icon}
+                    activeIcon={activeicon}
 
-            />
-            <Button
-                variant = 'primary'
-                size = 'top'
-                text = 'Top'
-                icon={ArrowTop}
-                activeIcon={ArrowTop}
-            />
+                />
+                <Button
+                    variant = 'primary'
+                    size = 'top'
+                    text = 'Top'
+                    icon={ArrowTop}
+                    activeIcon={ArrowTop}
+                />
 
-            <Button
-                variant = 'negative'
-                size = 'lg'
-                text = 'Like'
-                icon={Like}
-                activeIcon={LikeWhite}
-            />
+                <Button
+                    variant = 'negative'
+                    size = 'lg'
+                    text = 'Like'
+                    icon={Like}
+                    activeIcon={LikeWhite}
+                />
 
-            <Button
-                variant = 'round'
-                size = 'sm'
-                iconHeight= '2.15rem'
-                icon={Image}
-            />
+                <Button
+                    variant = 'round'
+                    size = 'sm'
+                    iconHeight= '2.15rem'
+                    icon={Image}
+                />
 
-            <Button
-                variant = 'subtle-primary'
-                size = 'md'
-                iconHeight= '2.15rem'
-                icon={Like}
-                activeIcon={LikeWhite}
-            />
+                <Button
+                    variant = 'subtle-primary'
+                    size = 'md'
+                    iconHeight= '2.15rem'
+                    icon={Like}
+                    activeIcon={LikeWhite}
+                />
 
-            <Button
-                variant = 'subtle-negative'
-                size = 'md'
-                iconHeight= '2.15rem'
-                icon={Like}
-                activeIcon={LikeWhite}
-            />
+                <Button
+                    variant = 'subtle-negative'
+                    size = 'md'
+                    iconHeight= '2.15rem'
+                    icon={Like}
+                    activeIcon={LikeWhite}
+                />
 
-            <Input
-                label='Email'
-                type='email'
-                name='email'
-                placeholder='이메일을 입력해 주세요'
-            />
+                <Input
+                    label='Email'
+                    type='email'
+                    name='email'
+                    placeholder='이메일을 입력해 주세요'
+                />
 
-            <Input
-                label='Username'
-                name='username'
-                placeholder='사용자 이름을 입력해 주세요'
-            />
+                <Input
+                    label='Username'
+                    name='username'
+                    placeholder='사용자 이름을 입력해 주세요'
+                />
 
-            <InputPassword
-                label='Password'
-                name='password'
-                placeholder='비밀번호를 입력해 주세요'
-            />
+                <InputPassword
+                    label='Password'
+                    name='password'
+                    placeholder='비밀번호를 입력해 주세요'
+                />
 
-            <Categories
-                categories={categories}
-                theme='positive'
-            />
+                <Categories
+                    categories={categories}
+                    theme='positive'
+                />
 
-            <Author
-                image = {profile}
-                author='이현규'
-                dateString='2022-01-01'
-            />
+                <Author
+                    dateString='2022-01-01'
+                />
 
-            <Profile
-                image={profile}
-                editable={true}
-            />
+                <Profile
+                    editable={true}
+                />
 
-            <Header 
-                isLoggedIn={false}
-            />
+                <Header />
 
-            <Footer/>
+                <Footer/>
 
-            <Banner 
-                variant={'post'}
-                postDay={'Apr.'}
-                postMonth={'24'}
-                postWeekday={'Sunday'}
-            />
+                <Banner 
+                    variant={'post'}
+                    postDay={'Apr.'}
+                    postMonth={'24'}
+                    postWeekday={'Sunday'}
+                />
 
-            <About
-                name={'Chilli'}
-            />
+                <About />
 
-        </BrowserRouter>
+                <Card article={mockArticle} />
+
+            </BrowserRouter>
+        </AuthProvider>
     )
 }
 

@@ -6,9 +6,12 @@ import iconModify from '../../assets/icons/icon-modify-white.svg'
 import iconLogout from '../../assets/icons/icon-logout.svg'
 import iconLogin from '../../assets/icons/icon-login.svg'
 import iconRegister from '../../assets/icons/icon-register.svg'
+import { useAuth } from '../../contexts/AuthContext.jsx'
 
 
-export default function Header({isLoggedIn}){
+export default function Header(){
+    const { isLoggedIn } = useAuth()
+
     return(
         <header className={Styles.header}>
             <img 

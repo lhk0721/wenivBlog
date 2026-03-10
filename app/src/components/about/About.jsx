@@ -5,9 +5,11 @@ import Facebook from '../../assets/icons/Facebook.svg'
 import Github from '../../assets/icons/Github.svg'
 import Twitter from '../../assets/icons/Twitter.svg'
 import Instagram from '../../assets/icons/Instagram.svg'
+import { useAuth } from '../../contexts/AuthContext.jsx'
 
 // 이미지는 스트링
-export default function About({name, img,}){
+export default function About(){
+    const { currentUser, isLoggedIn } = useAuth()
     const categories = [
         { id: 1, name: "Life" },
         { id: 2, name: "Style" },
@@ -23,12 +25,15 @@ export default function About({name, img,}){
             {/* ===== aboutME ===== */}
             <h2>ABOUT ME</h2>
             <Profile
-                image={img}
                 size='md'
                 className={Styles.profileImg}
             />
-            <p className={Styles.name}>{name}</p>
-            <p className={Styles.description}>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+            <p className={Styles.name}>{isLoggedIn ? currentUser?.name : 'Guest'}</p>
+            <p className={Styles.description}>
+                {isLoggedIn
+                    ? `${currentUser?.name}님의 블로그입니다.`
+                    : '로그인하면 프로필 정보를 볼 수 있습니다.'}
+            </p>
 
             {/*===== categories =====*/}
             <h2>CATEGORIES</h2>
