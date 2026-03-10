@@ -19,9 +19,9 @@ Categories
 */
 
 
-export default function Categories({ categories, theme = 'default', groupWidth }) {
+export default function Categories({ categories, theme = 'default', groupWidth, className = '' }) {
     return (
-        <div className="categoryGroup" style={{ width: groupWidth }}>
+        <div className={`categoryGroup ${className}`.trim()} style={{ width: groupWidth }}>
             <ul className={Styles.categoryList}>
                 {categories.map((category) => (
                     <CategoryChip

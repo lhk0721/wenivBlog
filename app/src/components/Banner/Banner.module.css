@@ -21,8 +21,6 @@
 }
 
 .divider{
-    margin-top: 0;
-
     letter-spacing: 20%;
     font-style: light;
 
@@ -52,19 +50,16 @@ h2{
 }
 
 .postDay{
-    margin: 0;
     font-size: var(--font-size-xxxl);
     font-weight: var(--font-weight-bold);
 }
 .postMonth{
-    margin: 0;
     font-size: var(--font-size-xxxxl);
     font-weight: var(--font-weight-bold);
 }
 
 
 .postWeekday{
-    margin: 0;
     font-size: var(--font-size-xxxl);
     font-weight: var(--font-weight-bold);
 }

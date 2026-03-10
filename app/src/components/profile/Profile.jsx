@@ -10,19 +10,31 @@ import imageIcon from '../../assets/icons/icon-image.svg'
  * @param {Object} props
  * @param {string} [props.image] 프로필 이미지 URL
  * @param {boolean} [props.editable=false] 편집 버튼 노출 여부
- * @param {'lg'|'sm'} [props.size='lg'] 프로필 크기
+ * @param {'lg'| 'md' | 'sm'} [props.size='lg'] 프로필 크기
  * @returns {JSX.Element}
  */
-export default function Profile({ image, editable = false, size = 'lg' }){
+export default function Profile({ image, editable = false, size = 'lg', className = '' }){
     const isSm = size === 'sm'
     const isEditable = isSm ? false : editable
+    const containerClass =
+        size === 'sm'
+            ? Styles.containerSm
+            : size === 'md'
+              ? Styles.containerMd
+              : Styles.containerLg
+    const imageClass =
+        size === 'sm'
+            ? Styles.profileImgSm
+            : size === 'md'
+              ? Styles.profileImgMd
+              : Styles.profileImgLg
 
     return(
-        <div className={`${Styles.container} ${isSm ? Styles.containerSm : Styles.containerLg}`}>
+        <div className={`${Styles.container} ${containerClass} ${className}`}>
             <img 
                 src={image || noImg} 
                 alt="Profile img" 
-                className={`${Styles.proFileImg} ${isSm ? Styles.profileImgSm : Styles.profileImgLg}`}
+                className={`${Styles.proFileImg} ${imageClass}`}
             />
 
             {isEditable && 

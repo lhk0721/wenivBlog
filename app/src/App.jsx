@@ -37,6 +37,9 @@ import Footer from './components/footer/Footer.jsx'
 // Banner
 import Banner from './components/Banner/Banner.jsx'
 
+// About
+import About from './components/about/About.jsx'
+
 
 const categories = [
     { id: 1, name: "Life" },
@@ -145,6 +148,10 @@ function App() {
                 postDay={'Apr.'}
                 postMonth={'24'}
                 postWeekday={'Sunday'}
+            />
+
+            <About
+                name={'Chilli'}
             />
 
         </BrowserRouter>

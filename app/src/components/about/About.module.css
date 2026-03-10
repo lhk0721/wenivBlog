@@ -1,0 +1,52 @@
+.container{
+    width: 28.8rem;
+    height: 57.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    /* temp */
+    border: solid 1px black;
+}
+
+h2{
+    margin-bottom: 2rem;
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-xs);
+    text-decoration: underline;
+}
+
+.profileImg{
+    margin-bottom: 1.2rem;
+}
+
+.name{
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-md);
+    color: var(--color-action-primary);
+    margin-bottom: 0.8rem;
+}
+
+.description{
+    text-align: center;
+    width: 24rem;
+    line-height: 2rem;
+    font-size: var(--font-size-sm);
+    margin-bottom: 6rem;
+}
+
+._categories{
+    margin-bottom: 6rem;
+}
+
+.social{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.6rem;
+}
+
+.href{
+    width: 1.6rem;
+}

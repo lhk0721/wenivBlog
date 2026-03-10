@@ -1,6 +1,7 @@
 .categoryList {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 8px;
     list-style: none;
     padding: 0;

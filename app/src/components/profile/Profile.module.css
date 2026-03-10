@@ -13,6 +13,11 @@
     height: 4rem;
 }
 
+.containerMd{
+    width: 7.7rem;
+    height: 8rem;
+}
+
 .proFileImg{
     border-radius: var(--radius-full);
 }
@@ -25,6 +30,11 @@
 .profileImgSm{
     width: 4.4rem;
     height: 4.4rem;
+}
+
+.profileImgMd{
+    width: 7.7rem;
+    height: 8rem;
 }
 
 .editButton{
