@@ -31,6 +31,8 @@ import Profile from './components/Profile/Profile.jsx'
 // Header
 import Header from './components/header/Header.jsx'
 
+// Footer
+import Footer from './components/footer/Footer.jsx'
 
 
 const categories = [
@@ -132,6 +134,8 @@ function App() {
             <Header 
                 isLoggedIn={false}
             />
+
+            <Footer/>
 
         </BrowserRouter>
     )
