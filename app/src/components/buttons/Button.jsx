@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react'
  * @property {string} [activeIcon] 눌림 상태 아이콘 이미지 경로
  * @property {number|string} [iconWidth] 아이콘 너비 (예: 16, '2rem')
  * @property {number|string} [iconHeight] 아이콘 높이 (미지정 시 iconWidth 사용)
+ * @property {boolean} [bold=false] 버튼 텍스트 Bold 여부
  * @property {() => void} [onClick] 클릭 핸들러
  * @property {string} [className] 추가 클래스 이름
  */
@@ -27,6 +28,7 @@ export default function Button({
     activeIcon,
     iconWidth,
     iconHeight,
+    bold = false,
     onClick,
     className = ''
 }) {
@@ -61,7 +63,7 @@ export default function Button({
     return(
         <button
             onClick={onClick}
-            className={`${styles.base} ${styles[variant]} ${styles[size]} ${className}`}
+            className={`${styles.base} ${styles[variant]} ${styles[size]} ${bold ? styles.bold : ''} ${className}`}
             onMouseDown={() => setIsPressed(true)}
             onMouseUp={() => setIsPressed(false)}
             onTouchStart={() => setIsPressed(true)}

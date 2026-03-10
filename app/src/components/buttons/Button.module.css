@@ -27,8 +27,6 @@
     background-color: var(--color-bg-subtle);
 }
 
-
-
 .top{
     flex-direction: column;
     justify-content: flex-end;
@@ -42,10 +40,15 @@
     font-size: var(--font-size-md);
 }
 
-
 .round{
     border: solid 1px var(--color-action-primary);
     border-radius: var(--radius-full);
+    background-color: var(--color-action-primary);
+    color: var(--color-text-inverse);
+}
+
+.solid{
+    border: solid 1px var(--color-action-primary);
     background-color: var(--color-action-primary);
     color: var(--color-text-inverse);
 }
@@ -79,6 +82,11 @@
 .top{
     width: 6.4rem;
     height: 6.4rem;
+}
+
+/* font-weight */
+.bold{
+    font-weight: var(--font-weight-bold);
 }
 
 /* icon */
@@ -126,3 +134,4 @@
 .subtle-negative:active{
     background-color: var(--color-action-danger);
 }
+

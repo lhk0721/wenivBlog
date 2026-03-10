@@ -1,0 +1,14 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    width: 144rem;
+    height: 8rem;
+    padding: 2rem 10.8rem;
+}
+
+
+.headerActions{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}

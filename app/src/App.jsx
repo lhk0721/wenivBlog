@@ -130,7 +130,7 @@ function App() {
             />
 
             <Header 
-                isLoggedIn={true}
+                isLoggedIn={false}
             />
 
         </BrowserRouter>
