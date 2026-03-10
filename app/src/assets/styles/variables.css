@@ -6,13 +6,16 @@
     --color-text-quaternary: rgba(118, 118, 118, 1);
     --color-text-muted: rgba(204, 204, 204, 1);
     --color-text-inverse: #ffffff;
+    --color-text-subtle: rgba(249, 249, 249, 1);
 
     --color-bg-canvas: #ffffff;
     --color-bg-surface: #f8fafc;
     --color-bg-subtle: rgba(245, 245, 245, 1);
     --color-bg-filled: rgba(221, 221, 221, 1);
+    --color-bg-dim: rgba(0, 0, 0, 0.35);
     
     --color-border-default: #e5e7eb;
+    --color-border-subtle: rgba(249, 249, 249, 0.3);
 
     --color-action-primary: #37abec;
     --color-action-danger: #f37c4b;
@@ -26,9 +29,12 @@
     --font-size-sm: 1.4rem;
     --font-size-md: 1.6rem;
     --font-size-lg: 1.8rem;
+    --font-size-lg-plus: 2rem;
     --font-size-xl: 2.4rem;
+    --font-size-xxxl:5.4rem;
     --line-height-tight: 1.25;
     --line-height-normal: 1.5;
+    --line-height-sparse: 2rem;
     --line-height-relaxed: 1.75;
     --font-weight-regular: 400;
     --font-weight-medium: 500;

@@ -1,0 +1,52 @@
+.banner{
+    width: 144rem;
+    height: 42rem;
+    background-image: url(../../assets/images/background\ 1.png);
+    display: flex;
+    justify-content: flex-start;
+}
+
+.bannerContent{
+    width: 52.4rem;
+    background-color: var(--color-bg-dim);
+    color: var(--color-text-subtle);
+    
+    position: relative;
+}
+
+.textBox{
+    position: absolute;
+    top: 8rem;
+    left: 10.8rem;
+}
+
+.divider{
+    margin-top: 0;
+
+    letter-spacing: 20%;
+    font-style: light;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8rem;
+
+    width: 24rem;
+    border-top: solid 1px var(--color-border-subtle);
+    border-bottom: solid 1px var(--color-border-subtle);
+
+    font-size: var(--font-size-lg-plus);
+}
+
+h1{
+    margin-top: 0.8rem;
+    margin-bottom: 2.5rem;
+    font-size: var(--font-size-xxxl);
+    font-weight: var(--font-weight-bold);
+}
+
+.description{
+    width: 28.8rem;
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-sparse);
+}

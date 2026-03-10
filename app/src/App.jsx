@@ -34,6 +34,9 @@ import Header from './components/header/Header.jsx'
 // Footer
 import Footer from './components/footer/Footer.jsx'
 
+// Banner
+import Banner from './components/Banner/Banner.jsx'
+
 
 const categories = [
     { id: 1, name: "Life" },
@@ -136,6 +139,8 @@ function App() {
             />
 
             <Footer/>
+
+            <Banner/>
 
         </BrowserRouter>
     )
