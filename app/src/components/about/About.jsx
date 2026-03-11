@@ -8,6 +8,12 @@ import Instagram from '../../assets/icons/Instagram.svg'
 import { useAuth } from '../../contexts/AuthContext.jsx'
 
 // 이미지는 스트링
+/**
+ * 블로그의 'About Me' 섹션을 표시하는 컴포넌트입니다.
+ * 사용자의 프로필, 설명, 카테고리 목록 및 소셜 미디어 링크를 포함합니다.
+ * 
+ * @returns {JSX.Element}
+ */
 export default function About(){
     const { currentUser, isLoggedIn } = useAuth()
     const categories = [
@@ -22,8 +28,9 @@ export default function About(){
 
     return(
         <div className={Styles.container}>
+            <h1>Hello World</h1>
             {/* ===== aboutME ===== */}
-            <h2>ABOUT ME</h2>
+            <h2 className={Styles.sectionTitle}>ABOUT ME</h2>
             <Profile
                 size='md'
                 className={Styles.profileImg}
@@ -36,7 +43,7 @@ export default function About(){
             </p>
 
             {/*===== categories =====*/}
-            <h2>CATEGORIES</h2>
+            <h2 className={Styles.sectionTitle}>CATEGORIES</h2>
             <Categories
                 categories = {categories}
                 groupWidth = {288}
@@ -44,7 +51,7 @@ export default function About(){
             />
             
             {/*===== follow =====*/}
-            <h2>FOLLOW</h2>
+            <h2 className={Styles.sectionTitle}>FOLLOW</h2>
             <ul className={Styles.social}>
                 <li id='Facebook'><a href="https://facebook.com"><img className={Styles.href} src={Facebook} alt=""></img></a></li>
                 <li id='Twitter'><a href="https://twitter.com"><img className={Styles.href} src={Twitter} alt=""></img></a></li>

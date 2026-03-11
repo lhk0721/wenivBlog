@@ -1,0 +1,25 @@
+.container{
+    width: 60rem;
+    height: auto;
+    padding: 8rem 10.4rem;
+    border-radius: var(--radius-md);
+}
+
+.containerMypage{
+    width: 91.2rem;
+    padding: 8rem 26rem;
+}
+.contents{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+}
+
+.type{
+    margin: 0;
+    margin-bottom: 0.8rem;
+    font-size: var(--font-size-xl-plus);
+    font-weight: var(--font-weight-bold);
+    align-self: flex-start;
+}

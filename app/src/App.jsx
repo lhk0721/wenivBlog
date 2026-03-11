@@ -39,6 +39,7 @@ import Banner from './components/Banner/Banner.jsx'
 // About
 import About from './components/about/About.jsx'
 import Card from './components/card/Card.jsx'
+import Account from './components/wrap/Account.jsx'
 import { AuthProvider } from './contexts/AuthContext.jsx'
 import postImg1 from './assets/images/post-img1.png'
 import postImg2 from './assets/images/post-img2.png'
@@ -154,6 +155,7 @@ function App() {
         <AuthProvider>
             <BrowserRouter>
                 <AppRouter />
+                <Account type='Mypage' />
                 <Button
                     variant = 'primary'
                     size = 'md'
