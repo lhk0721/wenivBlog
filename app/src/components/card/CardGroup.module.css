@@ -1,0 +1,7 @@
+.recentPosts {
+    width: 91.2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 28.8rem);
+    gap: 2.4rem;
+    align-content: start;
+}
