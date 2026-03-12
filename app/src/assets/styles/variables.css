@@ -15,7 +15,7 @@
     --color-bg-dim: rgba(0, 0, 0, 0.35);
     
     --color-border-default: #e5e7eb;
-    --color-border-subtle: rgba(249, 249, 249, 1);
+    --color-border-subtle: rgba(221, 221, 221, 1);
 
     --color-action-primary: #37abec;
     --color-action-danger: #f37c4b;
@@ -32,7 +32,7 @@
     --font-size-lg-plus: 2rem;
     --font-size-xl: 2.4rem;
     --font-size-xl-plus: 2.4rem;
-
+    --font-size-xl-extra: 3.2rem;
     --font-size-xxl: 5rem;
     --font-size-xxxl:5.4rem;
     --font-size-xxxxl:10rem;

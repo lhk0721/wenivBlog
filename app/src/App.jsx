@@ -39,8 +39,10 @@ import Banner from './components/Banner/Banner.jsx'
 // About
 import About from './components/about/About.jsx'
 import Card from './components/card/Card.jsx'
+import ContentLayout from './components/content-layout/ContentLayout.jsx'
 import Account from './components/wrap/Account.jsx'
 import Post from './components/post/Post.jsx'
+import Write from './components/write/Write.jsx'
 import { AuthProvider } from './contexts/AuthContext.jsx'
 import postImg1 from './assets/images/post-img1.png'
 import postImg2 from './assets/images/post-img2.png'
@@ -278,9 +280,16 @@ function App() {
                 <Card article={mockArticle} />
 
                 {/* temp: Post 컴포넌트 테스트 */}
-                <Post
-                    article = {mockArticle}
-                />
+                <ContentLayout>
+                    <Post
+                        article = {mockArticle}
+                    />
+                </ContentLayout>
+
+                <ContentLayout>
+                    {/* temp: Write 컴포넌트 테스트 */}
+                    <Write />
+                </ContentLayout>
 
                 <CardGroup
                     articleList={articleList}

@@ -1,0 +1,27 @@
+.container{
+    position: relative;
+    width: 100%;
+    max-width: 91.2rem;
+    border: solid 1px var(--color-border-default, #d9d9d9);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-canvas, #fff);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 7.6rem 8rem;
+}
+
+.backButton{
+    position: absolute;
+    top: 7.2rem;
+    left: 1.2rem;
+}
+
+.backButton:active{
+    transform: translateX(-1px) !important;
+}
+
+.body{
+    display: flex;
+    flex-direction: column;
+}

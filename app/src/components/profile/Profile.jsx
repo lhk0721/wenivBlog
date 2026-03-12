@@ -2,6 +2,7 @@ import Styles from './Profile.module.css'
 import noImg from '../../assets/images/noimg.png'
 import Button from '../buttons/Button'
 import imageIcon from '../../assets/icons/icon-image.svg'
+import activeImageIcon from '../../assets/icons/icon-image-primary.svg'
 import { useAuth } from '../../contexts/AuthContext.jsx'
 
 /**
@@ -44,6 +45,7 @@ export default function Profile({ image, editable = false, size = 'lg', classNam
                 <Button
                     variant='round'
                     icon={imageIcon}
+                    activeIcon={activeImageIcon}
                     iconWidth={'2rem'}
                     size={'sm'}
                     className={Styles.editButton}

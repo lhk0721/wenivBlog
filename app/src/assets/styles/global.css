@@ -100,7 +100,24 @@ html{
 }
 
 input{
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
     outline: none;
+}
+
+textarea{
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    outline: none;
+    resize: none;
 }
 
 ul,
