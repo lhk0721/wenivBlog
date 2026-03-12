@@ -19,7 +19,7 @@ Categories
 */
 
 
-export default function Categories({ categories, theme = 'default', groupWidth, className = '', listClassName = '' }) {
+export default function Categories({ categories = [], theme = 'default', groupWidth, className = '', listClassName = '' }) {
     return (
         <div className={`categoryGroup ${className}`.trim()} style={{ width: groupWidth }}>
             <ul className={`${Styles.categoryList} ${listClassName}`.trim()}>

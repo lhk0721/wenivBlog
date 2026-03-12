@@ -22,7 +22,7 @@ export default function Banner({variant, postDay, postMonth, postWeekday}){
                     <p className={Styles.divider}>
                     React & Node
                     </p>
-                    <h2>My BLOG</h2>
+                    <h2 className={Styles.title}>My BLOG</h2>
                     <p className={Styles.description}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste error quibusdam ipsa quis quidem doloribus eos, dolore ea iusto impedit!</p>
                 </div>
             </div>}

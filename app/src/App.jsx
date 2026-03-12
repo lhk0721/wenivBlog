@@ -40,6 +40,7 @@ import Banner from './components/Banner/Banner.jsx'
 import About from './components/about/About.jsx'
 import Card from './components/card/Card.jsx'
 import Account from './components/wrap/Account.jsx'
+import Post from './components/post/Post.jsx'
 import { AuthProvider } from './contexts/AuthContext.jsx'
 import postImg1 from './assets/images/post-img1.png'
 import postImg2 from './assets/images/post-img2.png'
@@ -67,6 +68,25 @@ const getRandomPostImage = () => {
     return postImages[randomIndex]
 }
 
+const createUserContents = (title) => ([
+    {
+        id: 1,
+        type: 'text',
+        content: `${title}의 도입부입니다. 본문 첫 단락이 자연스럽게 이어지는지 확인하기 위한 테스트 텍스트입니다.`,
+    },
+    {
+        id: 2,
+        type: 'image',
+        src: getRandomPostImage(),
+        alt: `${title} 본문 이미지`,
+    },
+    {
+        id: 3,
+        type: 'text',
+        content: '이미지 아래에 이어지는 본문입니다. 텍스트와 이미지가 섞인 게시글 레이아웃을 검증하기 위한 예시 데이터입니다.',
+    },
+])
+
 const mockArticle = {
     id: 1,
     dateString: '2026-03-10',
@@ -78,6 +98,7 @@ const mockArticle = {
         { id: 7, name: 'Develop' },
     ],
     description: '카드 레이아웃, 이미지 비율, 텍스트 줄바꿈, 카테고리 간격을 확인하기 위한 테스트용 게시글입니다.',
+    userContents: createUserContents('Card 컴포넌트 CSS 테스트용 게시글입니다.'),
 }
 
 const articleList = [
@@ -92,6 +113,7 @@ const articleList = [
             { id: 6, name: 'Photo' },
         ],
         description: 'CardGroup에서 3열 배치와 카드 간 간격을 확인하기 위한 두 번째 테스트 데이터입니다.',
+        userContents: createUserContents('두 번째 카드 테스트용 게시글입니다.'),
     },
     {
         id: 3,
@@ -103,6 +125,7 @@ const articleList = [
             { id: 5, name: 'Sport' },
         ],
         description: '목록 렌더링과 key 처리, 줄바꿈 상태를 확인하기 위한 세 번째 테스트 데이터입니다.',
+        userContents: createUserContents('세 번째 카드 테스트용 게시글입니다.'),
     },
     {
         id: 4,
@@ -114,6 +137,7 @@ const articleList = [
             { id: 4, name: 'Music' },
         ],
         description: '카드 그룹 두 번째 행 시작 지점을 확인하기 위한 네 번째 테스트 데이터입니다.',
+        userContents: createUserContents('네 번째 카드 테스트용 게시글입니다.'),
     },
     {
         id: 5,
@@ -125,6 +149,7 @@ const articleList = [
             { id: 7, name: 'Develop' },
         ],
         description: '여러 줄 카드 배치와 본문 길이 차이를 확인하기 위한 다섯 번째 테스트 데이터입니다.',
+        userContents: createUserContents('다섯 번째 카드 테스트용 게시글입니다.'),
     },
     {
         id: 6,
@@ -136,6 +161,7 @@ const articleList = [
             { id: 5, name: 'Sport' },
         ],
         description: '카드 썸네일 랜덤 이미지 적용 상태를 확인하기 위한 여섯 번째 테스트 데이터입니다.',
+        userContents: createUserContents('여섯 번째 카드 테스트용 게시글입니다.'),
     },
     {
         id: 7,
@@ -147,6 +173,7 @@ const articleList = [
             { id: 7, name: 'Develop' },
         ],
         description: '마지막 카드가 단독 열에 배치될 때 레이아웃이 자연스러운지 보기 위한 일곱 번째 테스트 데이터입니다.',
+        userContents: createUserContents('일곱 번째 카드 테스트용 게시글입니다.'),
     },
 ]
 
@@ -249,6 +276,11 @@ function App() {
                 <About />
 
                 <Card article={mockArticle} />
+
+                {/* temp: Post 컴포넌트 테스트 */}
+                <Post
+                    article = {mockArticle}
+                />
 
                 <CardGroup
                     articleList={articleList}

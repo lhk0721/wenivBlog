@@ -15,7 +15,7 @@
     --color-bg-dim: rgba(0, 0, 0, 0.35);
     
     --color-border-default: #e5e7eb;
-    --color-border-subtle: rgba(249, 249, 249, 0.3);
+    --color-border-subtle: rgba(249, 249, 249, 1);
 
     --color-action-primary: #37abec;
     --color-action-danger: #f37c4b;

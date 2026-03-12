@@ -36,7 +36,7 @@
     font-size: var(--font-size-lg-plus);
 }
 
-h2{
+.title{
     margin-top: 0.8rem;
     margin-bottom: 2.5rem;
     font-size: var(--font-size-xxxl);
