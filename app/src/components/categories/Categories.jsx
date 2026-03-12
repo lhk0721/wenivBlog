@@ -16,9 +16,19 @@ import Styles from './Categories.module.css'
  * @param {number|string} [props.groupWidth] 그룹 너비
  * @param {string} [props.className=''] 그룹 래퍼 추가 클래스 이름
  * @param {string} [props.listClassName=''] 리스트 추가 클래스 이름
+ * @param {number|string|null} [props.activeCategoryId=null] 활성 카테고리 id
+ * @param {(category: CategoryItem) => void} [props.onCategoryClick] 카테고리 클릭 핸들러
  * @returns {JSX.Element}
  */
-export default function Categories({ categories = [], theme = 'default', groupWidth, className = '', listClassName = '' }) {
+export default function Categories({
+    categories = [],
+    theme = 'default',
+    groupWidth,
+    className = '',
+    listClassName = '',
+    activeCategoryId = null,
+    onCategoryClick,
+}) {
     return (
         <div className={`categoryGroup ${className}`.trim()} style={{ width: groupWidth }}>
             <ul className={`${Styles.categoryList} ${listClassName}`.trim()}>
@@ -27,6 +37,8 @@ export default function Categories({ categories = [], theme = 'default', groupWi
                         key={category.id}
                         label={category.name}
                         theme={theme}
+                        isActive={activeCategoryId === category.id}
+                        onClick={onCategoryClick ? () => onCategoryClick(category) : undefined}
                     />
                 ))}
             </ul>

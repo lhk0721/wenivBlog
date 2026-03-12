@@ -6,6 +6,12 @@ const AuthContext = createContext(null)
 const initialUser = {
     name: '이현규',
     profileImage,
+    socialLinks: {
+        facebook: '',
+        twitter: '',
+        instagram: '',
+        github: '',
+    },
 }
 
 export function AuthProvider({ children }) {

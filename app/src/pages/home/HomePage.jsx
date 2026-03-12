@@ -6,6 +6,13 @@ import styles from './HomePage.module.css'
 
 function HomePage() {
     const [visibleCount, setVisibleCount] = useState(6)
+    const [activeCategory, setActiveCategory] = useState(null)
+
+    const filteredArticles = activeCategory
+        ? articles.filter((article) =>
+              article.Categories?.some((category) => category.name === activeCategory.name),
+          )
+        : articles
 
     useEffect(() => {
         const handleScroll = () => {
@@ -17,11 +24,11 @@ function HomePage() {
             }
 
             setVisibleCount((currentCount) => {
-                if (currentCount >= articles.length) {
+                if (currentCount >= filteredArticles.length) {
                     return currentCount
                 }
 
-                return Math.min(currentCount + 3, articles.length)
+                return Math.min(currentCount + 3, filteredArticles.length)
             })
         }
 
@@ -31,15 +38,31 @@ function HomePage() {
         return () => {
             window.removeEventListener('scroll', handleScroll)
         }
-    }, [])
+    }, [filteredArticles.length])
+
+    useEffect(() => {
+        setVisibleCount(6)
+    }, [activeCategory])
+
+    const handleCategorySelect = (category) => {
+        setActiveCategory((currentCategory) =>
+            currentCategory?.id === category.id ? null : category,
+        )
+    }
 
     return (
         <section className={styles.page}>
             <div className={styles.about}>
-                <About />
+                <About
+                    activeCategoryId={activeCategory?.id ?? null}
+                    onCategorySelect={handleCategorySelect}
+                />
             </div>
             <div className={styles.cards}>
-                <CardGroup articleList={articles.slice(0, visibleCount)} />
+                <CardGroup
+                    articleList={filteredArticles.slice(0, visibleCount)}
+                    activeCategoryName={activeCategory?.name ?? null}
+                />
             </div>
         </section>
     )

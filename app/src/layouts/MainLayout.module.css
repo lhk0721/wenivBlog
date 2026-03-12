@@ -9,6 +9,7 @@
     width: 100%;
     max-width: 144rem;
     margin: 0 auto;
+    background-color: var(--color-text-subtle);
 }
 
 .appMain {

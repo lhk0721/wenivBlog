@@ -12,6 +12,38 @@
     animation: cardRiseIn 0.7s ease-out forwards;
 }
 
+.fallbackCard {
+    width: 28.8rem;
+    min-height: 40rem;
+    padding: 3.2rem 2.4rem;
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-md);
+    background: linear-gradient(180deg, #ffffff 0%, #f7fbfe 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.2rem;
+}
+
+.fallbackEyebrow {
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.18em;
+    color: var(--color-action-primary);
+}
+
+.fallbackTitle {
+    font-size: var(--font-size-xl);
+    line-height: 1.35;
+    color: var(--color-text-primary);
+}
+
+.fallbackDescription {
+    font-size: var(--font-size-sm);
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+}
+
 @keyframes cardRiseIn {
     from {
         opacity: 0;
@@ -34,5 +66,9 @@
 @media (max-width: 1023px) {
     .recentPosts {
         grid-template-columns: minmax(0, 1fr);
+    }
+
+    .fallbackCard {
+        width: 100%;
     }
 }
