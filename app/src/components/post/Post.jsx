@@ -7,6 +7,29 @@ import activeModify from '../../assets/icons/icon-modify-white.svg'
 import _delete from '../../assets/icons/icon-delete-white.svg'
 import activeDelete from '../../assets/icons/icon-delete-white-1.svg'
 
+/**
+ * @typedef {Object} PostContentItem
+ * @property {number|string} id
+ * @property {'text' | 'image'} type
+ * @property {string} [content]
+ * @property {string} [src]
+ * @property {string} [alt]
+ */
+
+/**
+ * @typedef {Object} PostArticle
+ * @property {string} [dateString]
+ * @property {string} [title]
+ * @property {{ id: number|string, name: string }[]} [Categories]
+ * @property {PostContentItem[]} [userContents]
+ */
+
+/**
+ * 단일 게시글 상세 본문을 렌더링합니다.
+ *
+ * @param {{ article?: PostArticle }} props
+ * @returns {JSX.Element}
+ */
 export default function Post({ article }){
     const userContents = article?.userContents ?? []
     const categories = article?.Categories ?? []

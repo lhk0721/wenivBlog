@@ -2,6 +2,12 @@ import Styles from './Author.module.css'
 import { useAuth } from '../../contexts/AuthContext.jsx'
 import defaultProfileImage from '../../assets/images/noimg.png'
 
+/**
+ * 작성자 메타 정보와 게시 날짜를 표시합니다.
+ *
+ * @param {{ dateString?: string }} props
+ * @returns {JSX.Element}
+ */
 export default function Author({ dateString }){
     const { currentUser } = useAuth()
     const postDate = dateString ? dateString.replaceAll('-', '.') : '날짜 미정'

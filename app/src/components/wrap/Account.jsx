@@ -4,6 +4,17 @@ import Input from '../inputs/Input.jsx'
 import InputPassword from '../inputs/InputPassword.jsx'
 import Button from '../buttons/Button.jsx'
 
+/**
+ * @typedef {Object} AccountProps
+ * @property {'Login' | 'Register' | 'Mypage'} [type] 계정 폼 종류
+ */
+
+/**
+ * 로그인, 회원가입, 마이페이지용 계정 폼을 렌더링합니다.
+ *
+ * @param {AccountProps} props
+ * @returns {JSX.Element}
+ */
 export default function Account({type}){
     const showUsernameInput = type === 'Register' || type === 'Mypage'
     const containerClassName = type === 'Mypage'

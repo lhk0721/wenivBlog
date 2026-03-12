@@ -8,7 +8,11 @@ import activeSave from '../../assets/icons/icon-save-white.svg'
 import imageIcon from '../../assets/icons/icon-image-primary.svg'
 import activeImageIcon from '../../assets/icons/icon-image.svg'
 
-
+/**
+ * 게시글 작성용 에디터 UI를 렌더링합니다.
+ *
+ * @returns {JSX.Element}
+ */
 export default function Write() {
     const [content, setContent] = useState('')
     const [selectedImage, setSelectedImage] = useState(null)

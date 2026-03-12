@@ -43,6 +43,7 @@ function validatePassword(value) {
 
 /**
  * @param {InputPasswordProps} props
+ * @returns {JSX.Element}
  */
 export default function InputPassword({
     label = 'Password',

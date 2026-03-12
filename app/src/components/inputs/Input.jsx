@@ -40,6 +40,7 @@ function joinClassNames(...classNames) {
 
 /**
  * @param {InputProps} props
+ * @returns {JSX.Element}
  */
 export default function Input({
     label,

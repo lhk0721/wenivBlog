@@ -7,11 +7,10 @@ import Twitter from '../../assets/icons/Twitter.svg'
 import Instagram from '../../assets/icons/Instagram.svg'
 import { useAuth } from '../../contexts/AuthContext.jsx'
 
-// 이미지는 스트링
 /**
  * 블로그의 'About Me' 섹션을 표시하는 컴포넌트입니다.
  * 사용자의 프로필, 설명, 카테고리 목록 및 소셜 미디어 링크를 포함합니다.
- * 
+ *
  * @returns {JSX.Element}
  */
 export default function About(){

@@ -8,7 +8,11 @@ import iconLogin from '../../assets/icons/icon-login.svg'
 import iconRegister from '../../assets/icons/icon-register.svg'
 import { useAuth } from '../../contexts/AuthContext.jsx'
 
-
+/**
+ * 현재 로그인 상태에 따라 헤더 액션 버튼을 렌더링합니다.
+ *
+ * @returns {JSX.Element}
+ */
 export default function Header(){
     const { isLoggedIn } = useAuth()
 

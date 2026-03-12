@@ -3,20 +3,22 @@ import Categories from '../categories/Categories'
 import { useAuth } from '../../contexts/AuthContext.jsx'
 import Styles from './Card.module.css'
 
-/* id에 해당하는 글 정보를 객체로 넘겨준다.
-글 객체 하나의 구조는 다음과 같다.
-article {
-id: number
-dateString: string
-title: string
-thumbnail: string(src)
-categoty: [{ id: num, name: "string" },...]
-description: string
-}
+/**
+ * @typedef {Object} CardArticle
+ * @property {number|string} [id]
+ * @property {string} thumbnail 썸네일 이미지 경로
+ * @property {string} title 게시글 제목
+ * @property {string} [dateString] 게시 날짜
+ * @property {{ id: number|string, name: string }[]} [Categories] 카테고리 목록
+ * @property {string} [description] 게시글 요약
+ */
 
-
-*/
-
+/**
+ * 게시글 카드 하나를 렌더링합니다.
+ *
+ * @param {{ article: CardArticle }} props
+ * @returns {JSX.Element}
+ */
 export default function Card({article}){
     const { isLoggedIn } = useAuth()
 

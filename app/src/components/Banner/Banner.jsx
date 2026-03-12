@@ -1,15 +1,14 @@
 import Styles from './Banner.module.css'
-/*variant type
-1. primary
-2. auth
-3. post
-*/ 
-
-/*postDate
-Date 객체임
-*/ 
-
-
+/**
+ * 상단 배너를 렌더링합니다.
+ *
+ * @param {Object} props
+ * @param {'primary' | 'auth' | 'post'} props.variant 배너 종류
+ * @param {string} [props.postDay] 게시글 배너의 일 표시
+ * @param {string} [props.postMonth] 게시글 배너의 월 표시
+ * @param {string} [props.postWeekday] 게시글 배너의 요일 표시
+ * @returns {JSX.Element}
+ */
 export default function Banner({variant, postDay, postMonth, postWeekday}){
     const primary = variant === 'primary';
     const post = variant === 'post'

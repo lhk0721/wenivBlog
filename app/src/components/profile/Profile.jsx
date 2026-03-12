@@ -13,6 +13,7 @@ import { useAuth } from '../../contexts/AuthContext.jsx'
  * @param {string} [props.image] 프로필 이미지 URL
  * @param {boolean} [props.editable=false] 편집 버튼 노출 여부
  * @param {'lg'| 'md' | 'sm'} [props.size='lg'] 프로필 크기
+ * @param {string} [props.className=''] 추가 클래스 이름
  * @returns {JSX.Element}
  */
 export default function Profile({ image, editable = false, size = 'lg', className = '' }){
