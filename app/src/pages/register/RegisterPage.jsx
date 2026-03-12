@@ -1,11 +1,14 @@
-import PageContainer from '../../components/common/PageContainer.jsx'
+import Account from '../../components/Account/Account.jsx'
+import pageShell from '../pageShell.module.css'
 import styles from './RegisterPage.module.css'
 
 function RegisterPage() {
     return (
-        <PageContainer title="Register" subtitle="새 계정을 생성하세요">
-            <section className={styles.page} />
-        </PageContainer>
+        <section className={`${pageShell.page} ${styles.page}`.trim()}>
+            <div className={`${pageShell.slot} ${pageShell.account}`.trim()}>
+                <Account type="Register" />
+            </div>
+        </section>
     )
 }
 

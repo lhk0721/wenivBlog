@@ -1,6 +1,8 @@
 import Author from '../author/Author'
 import Categories from '../categories/Categories'
+import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext.jsx'
+import { getPostViewPath } from '../../routes/paths.js'
 import Styles from './Card.module.css'
 
 /**
@@ -21,9 +23,31 @@ import Styles from './Card.module.css'
  */
 export default function Card({article}){
     const { isLoggedIn } = useAuth()
+    const navigate = useNavigate()
+
+    const handleOpenPost = () => {
+        if (!article?.id) {
+            return
+        }
+
+        navigate(getPostViewPath(article.id))
+    }
+
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault()
+            handleOpenPost()
+        }
+    }
 
     return(
-        <div className={Styles.container}>
+        <div
+            className={Styles.container}
+            role="link"
+            tabIndex={0}
+            onClick={handleOpenPost}
+            onKeyDown={handleKeyDown}
+        >
             <img 
                 src={article.thumbnail} alt="thumbnail" 
                 className={Styles.thumbnail}

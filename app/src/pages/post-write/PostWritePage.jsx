@@ -1,11 +1,20 @@
-import PageContainer from '../../components/common/PageContainer.jsx'
+import { useNavigate } from 'react-router-dom'
+import ContentLayout from '../../components/content-layout/ContentLayout.jsx'
+import Write from '../../components/write/Write.jsx'
+import pageShell from '../pageShell.module.css'
 import styles from './PostWritePage.module.css'
 
 function PostWritePage() {
+    const navigate = useNavigate()
+
     return (
-        <PageContainer title="Post Write" subtitle="게시글 작성">
-            <section className={styles.page} />
-        </PageContainer>
+        <section className={`${pageShell.page} ${styles.page}`.trim()}>
+            <div className={`${pageShell.slot} ${pageShell.content}`.trim()}>
+                <ContentLayout onBackClick={() => navigate(-1)}>
+                    <Write />
+                </ContentLayout>
+            </div>
+        </section>
     )
 }
 

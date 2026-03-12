@@ -1,11 +1,14 @@
-import PageContainer from '../../components/common/PageContainer.jsx'
+import Account from '../../components/Account/Account.jsx'
+import pageShell from '../pageShell.module.css'
 import styles from './MyPage.module.css'
 
 function MyPage() {
     return (
-        <PageContainer title="Mypage" subtitle="프로필과 작성 글 관리">
-            <section className={styles.page} />
-        </PageContainer>
+        <section className={`${pageShell.page} ${styles.page}`.trim()}>
+            <div className={`${pageShell.slot} ${pageShell.account}`.trim()}>
+                <Account type="Mypage" />
+            </div>
+        </section>
     )
 }
 

@@ -14,12 +14,15 @@ export default function CardGroup({ articleList }) {
     return (
         <section className={Styles.recentPosts}>
             {!isEmpty &&
-                articleList.map((article) => {
+                articleList.map((article, index) => {
                     return (
-                        <Card
+                        <div
                             key={article.id}
-                            article={article}
-                        />
+                            className={Styles.cardItem}
+                            style={{ animationDelay: `${index * 0.06}s` }}
+                        >
+                            <Card article={article} />
+                        </div>
                     )
                 })}
         </section>

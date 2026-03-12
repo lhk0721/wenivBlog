@@ -6,4 +6,9 @@ export const PATHS = {
     POST_VIEW: '/post/:postId',
     POST_WRITE: '/write',
     ALERT: '/alert',
+    COMPONENT_TEST: '/component-test',
+}
+
+export function getPostViewPath(postId) {
+    return `/post/${postId}`
 }

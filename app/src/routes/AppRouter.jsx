@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import MainLayout from '../layouts/MainLayout.jsx'
 import {
     AlertPage,
+    ComponentTestPage,
     HomePage,
     LoginPage,
     MyPage,
@@ -25,6 +26,7 @@ function AppRouter() {
             <Route path={PATHS.POST_VIEW} element={withLayout(<PostViewPage />)} />
             <Route path={PATHS.POST_WRITE} element={withLayout(<PostWritePage />)} />
             <Route path={PATHS.ALERT} element={withLayout(<AlertPage />)} />
+            <Route path={PATHS.COMPONENT_TEST} element={<ComponentTestPage />} />
             <Route path="*" element={<Navigate to={PATHS.HOME} replace />} />
         </Routes>
     )

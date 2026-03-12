@@ -6,6 +6,7 @@
     justify-content: center;
     align-items: center;
     border-radius: var(--radius-md);
+    background-color: var(--color-bg-canvas);
 }
 
 .sectionTitle{

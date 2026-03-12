@@ -1,4 +1,5 @@
-import Styles from './Footer.module.css'
+import { useEffect, useState } from 'react'
+import styles from './Footer.module.css'
 import Button from '../buttons/Button.jsx'
 import ArrowTop from '../../assets/icons/ArrowTop.svg'
 
@@ -7,18 +8,38 @@ import ArrowTop from '../../assets/icons/ArrowTop.svg'
  *
  * @returns {JSX.Element}
  */
-export default function Footer(){
-    return(
-        <div className={Styles.footer}>
-            <p className={Styles.copyright}>©Wenaiv Corp.</p>
-            <Button
-                variant = 'primary'
-                size = 'top'
-                text = 'Top'
-                icon={ArrowTop}
-                activeIcon={ArrowTop}
-                className={Styles.top}
-            />
-        </div>
+export default function Footer() {
+    const [isTopVisible, setIsTopVisible] = useState(false)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const bannerHeight = window.innerWidth <= 1439 ? 280 : 420
+
+            setIsTopVisible(window.scrollY >= bannerHeight)
+        }
+
+        handleScroll()
+        window.addEventListener('scroll', handleScroll, { passive: true })
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
+
+    return (
+        <footer className={styles.footer}>
+            <p className={styles.copyright}>©Wenaiv Corp.</p>
+            <div className={`${styles.topWrap} ${isTopVisible ? styles.visible : styles.hidden}`.trim()}>
+                <Button
+                    variant="primary"
+                    size="top"
+                    text="Top"
+                    icon={ArrowTop}
+                    activeIcon={ArrowTop}
+                    className={styles.top}
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                />
+            </div>
+        </footer>
     )
 }

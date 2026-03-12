@@ -2,6 +2,16 @@
     position: relative;
 }
 
+.clickable{
+    cursor: pointer;
+}
+
+.clickable:focus-visible{
+    outline: 2px solid var(--color-action-primary);
+    outline-offset: 4px;
+    border-radius: var(--radius-full);
+}
+
 .containerLg{
     width: 12rem;
     height: 12rem;

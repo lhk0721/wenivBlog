@@ -1,0 +1,64 @@
+.page {
+    display: grid;
+    grid-template-columns: 28.8rem 91.2rem;
+    column-gap: 2.4rem;
+    align-items: start;
+    width: 100%;
+    min-height: 96rem;
+    padding: 0 10.8rem 8rem;
+}
+
+.slot {
+    min-width: 0;
+}
+
+.homeAbout {
+    grid-column: 1;
+    margin-top: 32rem;
+}
+
+.homeCards {
+    grid-column: 2;
+    margin-top: 32rem;
+    width: 91.2rem;
+}
+
+.login {
+    grid-column: 2;
+    margin-top: 18.6rem;
+}
+
+.account {
+    grid-column: 2;
+    margin-top: 10rem;
+}
+
+.content {
+    grid-column: 2;
+    margin-top: 12rem;
+    width: 91.2rem;
+}
+
+@media (max-width: 1439px) {
+    .page {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        column-gap: 0;
+        gap: 3.2rem;
+        padding: 3.2rem 2.4rem 6.4rem;
+    }
+
+    .homeAbout,
+    .homeCards,
+    .login,
+    .account,
+    .content {
+        grid-column: 1;
+        margin-top: 0;
+    }
+
+    .homeCards,
+    .content {
+        width: 100%;
+    }
+}

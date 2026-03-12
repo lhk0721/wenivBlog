@@ -5,3 +5,34 @@
     gap: 2.4rem;
     align-content: start;
 }
+
+.cardItem {
+    opacity: 0;
+    transform: translateY(2.4rem);
+    animation: cardRiseIn 0.7s ease-out forwards;
+}
+
+@keyframes cardRiseIn {
+    from {
+        opacity: 0;
+        transform: translateY(2.4rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 1439px) {
+    .recentPosts {
+        width: 100%;
+        grid-template-columns: repeat(2, minmax(0, 28.8rem));
+    }
+}
+
+@media (max-width: 1023px) {
+    .recentPosts {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

@@ -14,13 +14,15 @@ import { useAuth } from '../../contexts/AuthContext.jsx'
  * @param {boolean} [props.editable=false] 편집 버튼 노출 여부
  * @param {'lg'| 'md' | 'sm'} [props.size='lg'] 프로필 크기
  * @param {string} [props.className=''] 추가 클래스 이름
+ * @param {() => void} [props.onClick] 클릭 핸들러
  * @returns {JSX.Element}
  */
-export default function Profile({ image, editable = false, size = 'lg', className = '' }){
+export default function Profile({ image, editable = false, size = 'lg', className = '', onClick }){
     const { currentUser } = useAuth()
     const isSm = size === 'sm'
     const isEditable = isSm ? false : editable
     const resolvedImage = image || currentUser?.profileImage || noImg
+    const isClickable = typeof onClick === 'function'
     const containerClass =
         size === 'sm'
             ? Styles.containerSm
@@ -35,7 +37,22 @@ export default function Profile({ image, editable = false, size = 'lg', classNam
               : Styles.profileImgLg
 
     return(
-        <div className={`${Styles.container} ${containerClass} ${className}`}>
+        <div
+            className={`${Styles.container} ${containerClass} ${isClickable ? Styles.clickable : ''} ${className}`}
+            onClick={onClick}
+            role={isClickable ? 'button' : undefined}
+            tabIndex={isClickable ? 0 : undefined}
+            onKeyDown={
+                isClickable
+                    ? (event) => {
+                          if (event.key === 'Enter' || event.key === ' ') {
+                              event.preventDefault()
+                              onClick()
+                          }
+                      }
+                    : undefined
+            }
+        >
             <img 
                 src={resolvedImage} 
                 alt="Profile img" 

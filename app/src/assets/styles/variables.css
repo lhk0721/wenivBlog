@@ -8,7 +8,7 @@
     --color-text-inverse: #ffffff;
     --color-text-subtle: rgba(249, 249, 249, 1);
 
-    --color-bg-canvas: #ffffff;
+    --color-bg-canvas: rgba(255, 255, 255, 1);
     --color-bg-surface: #f8fafc;
     --color-bg-subtle: rgba(245, 245, 245, 1);
     --color-bg-filled: rgba(221, 221, 221, 1);

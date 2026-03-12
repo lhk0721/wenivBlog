@@ -1,54 +1,42 @@
-import { NavLink } from 'react-router-dom'
-import { PATHS } from '../routes/paths.js'
+import { matchPath, useLocation } from 'react-router-dom'
+import Banner from '../components/Banner/Banner.jsx'
+import Footer from '../components/footer/Footer.jsx'
+import Header from '../components/header/Header.jsx'
 import styles from './MainLayout.module.css'
 
 function MainLayout({ children }) {
+    const location = useLocation()
+    const bannerProps = getBannerProps(location.pathname)
+
     return (
         <div className={styles.appShell}>
-            <header className={styles.appHeader}>
-                <div className={styles.brand}>Winiv Blog</div>
-                <nav className={styles.mainNav} aria-label="주요 메뉴">
-                    <NavLink
-                        to={PATHS.HOME}
-                        className={({ isActive }) => `${styles.navLink} ${isActive ? styles.active : ''}`.trim()}
-                    >
-                        Home
-                    </NavLink>
-                    <NavLink
-                        to={PATHS.LOGIN}
-                        className={({ isActive }) => `${styles.navLink} ${isActive ? styles.active : ''}`.trim()}
-                    >
-                        Login
-                    </NavLink>
-                    <NavLink
-                        to={PATHS.REGISTER}
-                        className={({ isActive }) => `${styles.navLink} ${isActive ? styles.active : ''}`.trim()}
-                    >
-                        Register
-                    </NavLink>
-                    <NavLink
-                        to={PATHS.MYPAGE}
-                        className={({ isActive }) => `${styles.navLink} ${isActive ? styles.active : ''}`.trim()}
-                    >
-                        Mypage
-                    </NavLink>
-                    <NavLink
-                        to={PATHS.POST_WRITE}
-                        className={({ isActive }) => `${styles.navLink} ${isActive ? styles.active : ''}`.trim()}
-                    >
-                        Write
-                    </NavLink>
-                    <NavLink
-                        to={PATHS.ALERT}
-                        className={({ isActive }) => `${styles.navLink} ${isActive ? styles.active : ''}`.trim()}
-                    >
-                        Alert
-                    </NavLink>
-                </nav>
-            </header>
-            <main className={styles.appMain}>{children}</main>
+            <Header />
+            <div className={styles.mainSection}>
+                <Banner {...bannerProps} />
+                <main className={styles.appMain}>{children}</main>
+            </div>
+            <Footer />
         </div>
     )
+}
+
+function getBannerProps(pathname) {
+    if (pathname === '/login' || pathname === '/register') {
+        return { variant: 'auth' }
+    }
+
+    if (matchPath('/post/:postId', pathname) || pathname === '/write') {
+        const now = new Date('2026-03-12T12:00:00')
+
+        return {
+            variant: 'post',
+            postDay: String(now.getDate()).padStart(2, '0'),
+            postMonth: `${now.toLocaleString('en-US', { month: 'short' }).toUpperCase()}.`,
+            postWeekday: now.toLocaleString('en-US', { weekday: 'long' }).toUpperCase(),
+        }
+    }
+
+    return { variant: 'primary' }
 }
 
 export default MainLayout

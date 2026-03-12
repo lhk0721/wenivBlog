@@ -1,13 +1,26 @@
-.appShell {}
+.appShell {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #f7fbfe 0%, #ffffff 24rem);
+    color: var(--color-text-primary);
+}
 
-.appHeader {}
+.mainSection {
+    position: relative;
+    width: 100%;
+    max-width: 144rem;
+    margin: 0 auto;
+}
 
-.brand {}
+.appMain {
+    position: relative;
+    z-index: var(--z-base);
+    margin-top: -42rem;
+    padding: 0 0 8rem;
+}
 
-.mainNav {}
-
-.navLink {}
-
-.active {}
-
-.appMain {}
+@media (max-width: 1439px) {
+    .appMain {
+        margin-top: 0;
+        padding: 0 2.4rem 6.4rem;
+    }
+}
