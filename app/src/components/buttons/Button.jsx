@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 
 /**
  * @typedef {Object} ButtonProps
- * @property {'primary' | 'negative' | 'subtle-primary' | 'subtle-negative' | 'round' | 'solid'} variant 버튼 스타일 테마
+ * @property {'primary' | 'negative' | 'subtle-primary' | 'subtle-negative' | 'round' | 'solid-primary' | 'solid-negative'} variant 버튼 스타일 테마
  * @property {'sm' | 'md' | 'lg' | 'xlg' | 'xxlg' | 'top'} size 버튼 크기/레이아웃
  * @property {'button' | 'submit' | 'reset'} [type='button'] 버튼 타입
  * @property {string} [text] 버튼 텍스트

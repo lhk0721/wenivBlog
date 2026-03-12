@@ -47,10 +47,17 @@
     color: var(--color-text-inverse);
 }
 
-.solid{
+.solid-primary{
     border: solid 1px var(--color-action-primary);
     background-color: var(--color-action-primary);
     color: var(--color-text-inverse);
+}
+
+.solid-negative{
+    border: solid 1px var(--color-action-danger);
+    background-color: var(--color-action-danger);
+    color: var(--color-text-inverse);
+    
 }
 
 /* size */
@@ -135,3 +142,8 @@
     background-color: var(--color-action-danger);
 }
 
+.solid-negative:active{
+    border: solid 1px var(--color-bg-subtle);
+    background-color: var(--color-bg-subtle);
+    color: var(color-action-danger);
+}
