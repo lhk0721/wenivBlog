@@ -17,7 +17,7 @@ import { PATHS } from '../../routes/paths.js'
  * @returns {JSX.Element}
  */
 export default function Header() {
-    const { isLoggedIn } = useAuth()
+    const { isLoggedIn, logout } = useAuth()
     const navigate = useNavigate()
     const [isVisible, setIsVisible] = useState(true)
     const lastScrollYRef = useRef(0)
@@ -75,7 +75,10 @@ export default function Header() {
                         icon={iconLogout}
                         text="Logout"
                         bold
-                        onClick={() => navigate(PATHS.LOGIN)}
+                        onClick={() => {
+                            logout()
+                            navigate(PATHS.LOGIN)
+                        }}
                     />
                 )}
                 {!isLoggedIn && (

@@ -49,6 +49,8 @@ export default function InputPassword({
     label = 'Password',
     autoComplete = 'new-password',
     helperText = PASSWORD_HELPER_TEXT,
+    minLength = 8,
+    maxLength = 20,
     validate,
     ...props
 }) {
@@ -61,6 +63,8 @@ export default function InputPassword({
             type={isPasswordVisible ? 'text' : 'password'}
             autoComplete={autoComplete}
             helperText={helperText}
+            minLength={minLength}
+            maxLength={maxLength}
             validate={validate ?? validatePassword}
             trailing={(
                 <button

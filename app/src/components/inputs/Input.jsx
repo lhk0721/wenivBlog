@@ -73,44 +73,55 @@ export default function Input({
     const [innerValue, setInnerValue] = useState(defaultValue);
     const [localErrorMessage, setLocalErrorMessage] = useState('');
     const [isTouched, setIsTouched] = useState(false);
+    const [hasInteracted, setHasInteracted] = useState(false);
 
     const currentValue = isControlled ? value : innerValue;
 
     const visibleErrorMessage = errorMessage || (isTouched ? localErrorMessage : '');
-    const describedBy = visibleErrorMessage || helperText ? helpId : undefined;
+    const hasValue = String(currentValue ?? '').trim().length > 0;
+    const isValidState = hasInteracted && hasValue && !localErrorMessage && !errorMessage;
+    const visibleHelperText = isValidState ? '' : helperText;
+    const describedBy = visibleErrorMessage || visibleHelperText ? helpId : undefined;
 
     const runValidation = (target) => {
         const nextValue = target.value;
+        let nextErrorMessage = '';
+
+        target.setCustomValidity('');
 
         if (typeof validate === 'function') {
             const customMessage = validate(nextValue, target);
-            setLocalErrorMessage(customMessage || '');
-            return;
+            nextErrorMessage = customMessage || '';
+        } else if (!target.validity.valid) {
+            nextErrorMessage = target.validationMessage || '입력값을 확인해주세요.';
         }
 
-        if (!target.validity.valid) {
-            setLocalErrorMessage(target.validationMessage || '입력값을 확인해주세요.');
-            return;
-        }
-
-        setLocalErrorMessage('');
+        target.setCustomValidity(nextErrorMessage);
+        setLocalErrorMessage(nextErrorMessage);
     };
 
     const handleChange = (event) => {
+        setHasInteracted(true);
+
         if (!isControlled) {
             setInnerValue(event.target.value);
         }
 
-        if (isTouched) {
-            runValidation(event.target);
-        }
+        runValidation(event.target);
 
         if (onChange) {
             onChange(event);
         }
     };
 
+    const handleInput = (event) => {
+        if (!isControlled) {
+            setInnerValue(event.target.value);
+        }
+    };
+
     const handleBlur = (event) => {
+        setHasInteracted(true);
         setIsTouched(true);
         runValidation(event.target);
 
@@ -125,11 +136,18 @@ export default function Input({
         }
     };
 
+    const handleInvalid = (event) => {
+        setHasInteracted(true);
+        setIsTouched(true);
+        runValidation(event.target);
+    };
+
     const wrapperClassName = joinClassNames(styles.inputContainer, className);
 
     const inputClasses = joinClassNames(
         styles.base,
         visibleErrorMessage ? styles.error : '',
+        isValidState ? styles.valid : '',
         inputClassName
     );
 
@@ -141,16 +159,20 @@ export default function Input({
                 </label>
             )}
 
-            <div className={styles.inputRow}>
+            <div className={joinClassNames(styles.inputRow, isValidState ? styles.validRow : '')}>
                 <input
                     type={type}
                     name={name}
                     id={inputId}
-                    value={currentValue}
+                    {...(isControlled
+                        ? { value: currentValue }
+                        : { defaultValue })}
                     placeholder={placeholder}
+                    onInput={handleInput}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     onFocus={handleFocus}
+                    onInvalid={handleInvalid}
                     maxLength={maxLength}
                     minLength={minLength}
                     autoComplete={autoComplete}
@@ -164,9 +186,16 @@ export default function Input({
                 {trailing}
             </div>
 
-            {(visibleErrorMessage || helperText) && (
-                <p id={helpId} className={visibleErrorMessage ? styles.errorText : styles.helperText}>
-                    {visibleErrorMessage || helperText}
+            {(visibleErrorMessage || visibleHelperText) && (
+                <p
+                    id={helpId}
+                    className={
+                        visibleErrorMessage
+                            ? styles.errorText
+                            : styles.helperText
+                    }
+                >
+                    {visibleErrorMessage || visibleHelperText}
                 </p>
             )}
         </div>

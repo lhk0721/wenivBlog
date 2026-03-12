@@ -109,6 +109,34 @@ input{
     outline: none;
 }
 
+input:invalid,
+input:focus:invalid,
+textarea:invalid,
+textarea:focus:invalid,
+select:invalid,
+select:focus:invalid {
+    box-shadow: none;
+    outline: none;
+}
+
+input::-webkit-validation-bubble,
+input::-webkit-validation-bubble-message,
+input::-webkit-validation-bubble-arrow,
+input::-webkit-validation-bubble-top-outer-arrow,
+input::-webkit-validation-bubble-top-inner-arrow,
+textarea::-webkit-validation-bubble,
+textarea::-webkit-validation-bubble-message,
+textarea::-webkit-validation-bubble-arrow,
+textarea::-webkit-validation-bubble-top-outer-arrow,
+textarea::-webkit-validation-bubble-top-inner-arrow,
+select::-webkit-validation-bubble,
+select::-webkit-validation-bubble-message,
+select::-webkit-validation-bubble-arrow,
+select::-webkit-validation-bubble-top-outer-arrow,
+select::-webkit-validation-bubble-top-inner-arrow {
+    display: none;
+}
+
 textarea{
     appearance: none;
     -webkit-appearance: none;

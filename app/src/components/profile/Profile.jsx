@@ -1,3 +1,4 @@
+import { useId, useRef } from 'react'
 import Styles from './Profile.module.css'
 import noImg from '../../assets/images/noimg.png'
 import Button from '../buttons/Button'
@@ -15,13 +16,25 @@ import { useAuth } from '../../contexts/AuthContext.jsx'
  * @param {'lg'| 'md' | 'sm'} [props.size='lg'] 프로필 크기
  * @param {string} [props.className=''] 추가 클래스 이름
  * @param {() => void} [props.onClick] 클릭 핸들러
+ * @param {(event: React.ChangeEvent<HTMLInputElement>) => void} [props.onImageChange] 이미지 변경 핸들러
  * @returns {JSX.Element}
  */
-export default function Profile({ image, editable = false, size = 'lg', className = '', onClick }){
+export default function Profile({
+    image,
+    editable = false,
+    size = 'lg',
+    className = '',
+    onClick,
+    onImageChange,
+}){
     const { currentUser } = useAuth()
+    const inputId = useId()
+    const fileInputRef = useRef(null)
     const isSm = size === 'sm'
     const isEditable = isSm ? false : editable
-    const resolvedImage = image || currentUser?.profileImage || noImg
+    const customImage = image || currentUser?.profileImage || ''
+    const resolvedImage = customImage || noImg
+    const hasCustomImage = Boolean(customImage)
     const isClickable = typeof onClick === 'function'
     const containerClass =
         size === 'sm'
@@ -56,8 +69,19 @@ export default function Profile({ image, editable = false, size = 'lg', classNam
             <img 
                 src={resolvedImage} 
                 alt="Profile img" 
-                className={`${Styles.proFileImg} ${imageClass}`}
+                className={`${Styles.proFileImg} ${imageClass} ${hasCustomImage ? Styles.profileImgCover : ''}`}
             />
+
+            {isEditable && (
+                <input
+                    ref={fileInputRef}
+                    id={inputId}
+                    type='file'
+                    accept='image/*'
+                    className={Styles.fileInput}
+                    onChange={onImageChange}
+                />
+            )}
 
             {isEditable && 
                 <Button
@@ -67,6 +91,7 @@ export default function Profile({ image, editable = false, size = 'lg', classNam
                     iconWidth={'2rem'}
                     size={'sm'}
                     className={Styles.editButton}
+                    onClick={() => fileInputRef.current?.click()}
                 />
             }
 

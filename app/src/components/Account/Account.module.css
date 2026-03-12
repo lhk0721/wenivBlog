@@ -3,7 +3,7 @@
     height: auto;
     padding: 8rem 10.4rem;
     border-radius: var(--radius-md);
-    background-color: var(--color-text-subtle);
+    background-color: var(--color-bg-canvas);
 }
 
 .containerMypage{

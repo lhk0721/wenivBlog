@@ -2,6 +2,10 @@
     position: relative;
 }
 
+.fileInput{
+    display: none;
+}
+
 .clickable{
     cursor: pointer;
 }
@@ -30,6 +34,10 @@
 
 .proFileImg{
     border-radius: var(--radius-full);
+}
+
+.profileImgCover{
+    object-fit: cover;
 }
 
 .profileImgLg{
