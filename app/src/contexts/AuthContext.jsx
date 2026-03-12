@@ -1,10 +1,16 @@
 import { createContext, useContext, useMemo, useState } from 'react'
+import { login as loginRequest, signup as signupRequest } from '../api/auth.js'
+import {
+    clearStoredAuthTokens,
+    setStoredAuthTokens,
+} from '../api/client.js'
 import profileImage from '../assets/images/profile.png'
 
 const AuthContext = createContext(null)
 const AUTH_STORAGE_KEY = 'winivBlog.currentUser'
 
 const defaultUser = {
+    username: 'neighbor1',
     name: '이현규',
     email: 'neighbor@example.com',
     profileImage,
@@ -14,6 +20,19 @@ const defaultUser = {
         instagram: '',
         github: '',
     },
+}
+
+function normalizeStoredUser(user) {
+    if (!user) {
+        return null
+    }
+
+    return {
+        ...defaultUser,
+        ...user,
+        username: user.username ?? user.name ?? '',
+        name: user.name ?? user.username ?? defaultUser.name,
+    }
 }
 
 function getStoredUser() {
@@ -28,7 +47,7 @@ function getStoredUser() {
     }
 
     try {
-        return JSON.parse(storedValue)
+        return normalizeStoredUser(JSON.parse(storedValue))
     } catch {
         window.localStorage.removeItem(AUTH_STORAGE_KEY)
         return null
@@ -67,32 +86,61 @@ export function AuthProvider({ children }) {
         })
     }
 
-    const login = ({ email, name }) => {
+    const login = async ({ username, password, name }) => {
+        const nextUsername = username?.trim?.() || name?.trim?.() || ''
+        const response = await loginRequest({ username, password })
         const nextUser = {
             ...defaultUser,
-            email,
-            name: name || defaultUser.name,
+            username: response?.username ?? nextUsername,
+            email: response?.email ?? '',
+            name: response?.username ?? nextUsername ?? defaultUser.name,
+            profileImage: response?.profileImage ?? defaultUser.profileImage,
         }
 
+        setStoredAuthTokens({
+            accessToken: response?.access_token ?? '',
+            refreshToken: response?.refresh_token ?? '',
+        })
         setCurrentUser(nextUser)
         persistUser(nextUser)
+        return response
     }
 
-    const register = ({ email, name, profileImage: nextProfileImage }) => {
+    const register = async ({ email, password, name, profileImage: nextProfileImage, username }) => {
+        const nextUsername = username?.trim?.() || email?.trim?.() || name?.trim?.() || ''
+        const signupResponse = await signupRequest({
+            username: nextUsername,
+            password,
+        })
+        const loginResponse = await loginRequest({
+            username: nextUsername,
+            password,
+        })
         const nextUser = {
             ...defaultUser,
-            email,
-            name: name || defaultUser.name,
-            profileImage: nextProfileImage || defaultUser.profileImage,
+            username: loginResponse?.username ?? nextUsername,
+            email: loginResponse?.email ?? email ?? '',
+            name: loginResponse?.username ?? nextUsername ?? defaultUser.name,
+            profileImage: loginResponse?.profileImage ?? (nextProfileImage || defaultUser.profileImage),
         }
 
+        setStoredAuthTokens({
+            accessToken: loginResponse?.access_token ?? '',
+            refreshToken: loginResponse?.refresh_token ?? '',
+        })
         setCurrentUser(nextUser)
         persistUser(nextUser)
+        return {
+            ...signupResponse,
+            access_token: loginResponse?.access_token,
+            refresh_token: loginResponse?.refresh_token,
+        }
     }
 
     const logout = () => {
         setCurrentUser(null)
         persistUser(null)
+        clearStoredAuthTokens()
     }
 
     const value = useMemo(() => ({

@@ -65,6 +65,7 @@ export default function Input({
     errorMessage = '',
     validate,
     trailing,
+    ...inputProps
 }) {
     const generatedId = useId();
     const inputId = id ?? `${generatedId}-input`;
@@ -180,6 +181,7 @@ export default function Input({
                     required={required}
                     disabled={disabled}
                     readOnly={readOnly}
+                    {...inputProps}
                     aria-invalid={Boolean(visibleErrorMessage)}
                     aria-describedby={describedBy}
                 />

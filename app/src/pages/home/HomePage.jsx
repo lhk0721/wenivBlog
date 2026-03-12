@@ -1,18 +1,93 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import About from '../../components/about/About.jsx'
 import CardGroup from '../../components/card/CardGroup.jsx'
-import { articles } from '../../data/mockContent.js'
+import { getBlogList } from '../../api/blog.js'
+import { mapBlogSummary } from '../../utils/blogAdapter.js'
+import { matchesSearchQuery } from '../../utils/search.js'
 import styles from './HomePage.module.css'
+import { useAlert } from '../../contexts/AlertContext.jsx'
 
 function HomePage() {
+    const { alert } = useAlert()
+    const [articles, setArticles] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
     const [visibleCount, setVisibleCount] = useState(6)
     const [activeCategory, setActiveCategory] = useState(null)
+    const [searchQuery, setSearchQuery] = useState('')
+    const [debouncedSearchQuery, setDebouncedSearchQuery] = useState('')
 
-    const filteredArticles = activeCategory
-        ? articles.filter((article) =>
-              article.Categories?.some((category) => category.name === activeCategory.name),
-          )
-        : articles
+    useEffect(() => {
+        let isMounted = true
+
+        const fetchBlogs = async () => {
+            try {
+                const response = await getBlogList()
+
+                if (!isMounted) {
+                    return
+                }
+
+                setArticles(Array.isArray(response) ? response.map(mapBlogSummary) : [])
+            } catch (error) {
+                if (!isMounted) {
+                    return
+                }
+
+                setArticles([])
+                await alert({
+                    alertTitle: '게시글 목록을 불러오지 못했습니다.',
+                    alertContents: error.message,
+                    confirmText: '확인',
+                    confirmVariant: 'solid-negative',
+                })
+            } finally {
+                if (isMounted) {
+                    setIsLoading(false)
+                }
+            }
+        }
+
+        fetchBlogs()
+
+        return () => {
+            isMounted = false
+        }
+    }, [alert])
+
+    useEffect(() => {
+        const timeoutId = window.setTimeout(() => {
+            setDebouncedSearchQuery(searchQuery)
+        }, 200)
+
+        return () => {
+            window.clearTimeout(timeoutId)
+        }
+    }, [searchQuery])
+
+    const categories = useMemo(() => {
+        const map = new Map()
+
+        articles.forEach((article) => {
+            article.Categories?.forEach((category) => {
+                map.set(category.id, category)
+            })
+        })
+
+        return Array.from(map.values())
+    }, [articles])
+
+    const normalizedSearchQuery = debouncedSearchQuery.trim().toLowerCase()
+    const filteredArticles = articles.filter((article) => {
+        const matchesCategory = activeCategory
+            ? article.Categories?.some((category) => category.name === activeCategory.name)
+            : true
+        const matchesSearch = matchesSearchQuery(
+            [article.title, article.authorName, article.description],
+            normalizedSearchQuery,
+        )
+
+        return matchesCategory && matchesSearch
+    })
 
     useEffect(() => {
         const handleScroll = () => {
@@ -42,7 +117,16 @@ function HomePage() {
 
     useEffect(() => {
         setVisibleCount(6)
-    }, [activeCategory])
+    }, [activeCategory, normalizedSearchQuery])
+
+    const emptyTitle = articles.length === 0
+        ? '아직 작성된 글이 없습니다.'
+        : normalizedSearchQuery
+            ? '검색 결과가 없습니다.'
+            : '아직 작성된 글이 없습니다.'
+    const emptyDescription = normalizedSearchQuery
+        ? '제목, 작성자, 내용 검색어를 다시 확인해 주세요.'
+        : '새 글이 추가되면 이 영역에 카드가 표시됩니다.'
 
     const handleCategorySelect = (category) => {
         setActiveCategory((currentCategory) =>
@@ -55,13 +139,29 @@ function HomePage() {
             <div className={styles.about}>
                 <About
                     activeCategoryId={activeCategory?.id ?? null}
+                    categories={categories}
                     onCategorySelect={handleCategorySelect}
                 />
             </div>
             <div className={styles.cards}>
+                <div className={styles.searchPanel}>
+                    <label className={styles.searchLabel} htmlFor="home-search">POST SEARCH</label>
+                    <input
+                        id="home-search"
+                        type="search"
+                        className={styles.searchInput}
+                        placeholder="제목, 작성자, 내용으로 검색"
+                        value={searchQuery}
+                        onChange={(event) => setSearchQuery(event.target.value)}
+                    />
+                </div>
                 <CardGroup
-                    articleList={filteredArticles.slice(0, visibleCount)}
+                    articleList={isLoading ? [] : filteredArticles.slice(0, visibleCount)}
                     activeCategoryName={activeCategory?.name ?? null}
+                    emptyTitle={emptyTitle}
+                    emptyDescription={emptyDescription}
+                    searchQuery={normalizedSearchQuery}
+                    isLoading={isLoading}
                 />
             </div>
         </section>

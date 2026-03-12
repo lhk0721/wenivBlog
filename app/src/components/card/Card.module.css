@@ -43,13 +43,28 @@
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-lg);
     width: 100%;
+    display: -webkit-box;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
 }
 
 .description{
     font-size: var(--font-size-sm);
     line-height: 2rem;
     color: var(--color-text-quaternary);
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-clamp: 3;
+}
+
+.highlight{
+    color: var(--color-action-primary);
+    background: transparent;
+    font-weight: var(--font-weight-bold);
 }

@@ -2,6 +2,60 @@
 .container{
     display: flex;
     flex-direction: column;
+    gap: 3.2rem;
+}
+
+.generatorPanel{
+    padding: 2.4rem;
+    border: 1px solid var(--color-border-default);
+    border-radius: 1.6rem;
+    background:
+        linear-gradient(135deg, rgba(55, 171, 236, 0.08), rgba(248, 250, 252, 0.95)),
+        var(--color-bg-canvas);
+    box-shadow: var(--shadow-sm);
+}
+
+.generatorHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.6rem;
+    margin-bottom: 1.2rem;
+}
+
+.generatorEyebrow{
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-action-primary);
+    margin-bottom: 0.6rem;
+}
+
+.generatorTitle{
+    font-size: var(--font-size-xl);
+    line-height: 1.3;
+    margin: 0;
+}
+
+.generatorDescription{
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-secondary);
+    margin-bottom: 1.6rem;
+}
+
+.summaryTextarea{
+    width: 100%;
+    min-height: 24rem;
+    padding: 1.6rem;
+    border: 1px solid var(--color-border-default);
+    border-radius: 1.2rem;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: var(--color-text-primary);
+    resize: vertical;
 }
 
 .header{
@@ -37,50 +91,6 @@
     margin-bottom: 3.8rem;
 }
 
-.editorTools{
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    margin-bottom: 2.4rem;
-}
-
-.imageUploadButton{
-    width: auto;
-    padding: 0 1.4rem;
-}
-
-.fileInput{
-    display: none;
-}
-
-.removeImageButton{
-    padding: 0;
-    border: none;
-    background: transparent;
-    font-size: var(--font-size-sm, 1.4rem);
-    color: var(--color-text-secondary, #666);
-    cursor: pointer;
-}
-
-.preview{
-    margin: 0 0 2.4rem;
-}
-
-.previewImage{
-    display: block;
-    width: 100%;
-    max-height: 36rem;
-    object-fit: cover;
-    border: 1px solid var(--color-border-subtle);
-    border-radius: var(--radius-md);
-}
-
-.previewCaption{
-    margin-top: 0.8rem;
-    font-size: var(--font-size-sm, 1.4rem);
-    color: var(--color-text-secondary, #666);
-}
-
 .contentTextarea{
     width: 100%;
     min-height: 32rem;
@@ -91,4 +101,12 @@
 
 .contentTextarea::placeholder{
     color: var(--color-text-quaternary);
+}
+
+@media (max-width: 768px){
+    .generatorHeader,
+    .header{
+        flex-direction: column;
+        align-items: stretch;
+    }
 }

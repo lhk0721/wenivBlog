@@ -24,3 +24,32 @@
     font-weight: var(--font-weight-bold);
     align-self: flex-start;
 }
+
+.restoreEmailButton{
+    position: absolute;
+    top: 50%;
+    right: 1.2rem;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    padding: 0.4rem;
+}
+
+.restoreEmailButton:hover{
+    color: var(--color-action-primary);
+}
+
+.emailInputWithAction{
+    padding-right: 10rem;
+}
+
+.submitError{
+    width: 40rem;
+    margin-top: -2.4rem;
+    color: var(--color-action-danger);
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+}

@@ -29,10 +29,14 @@ export default function Categories({
     activeCategoryId = null,
     onCategoryClick,
 }) {
+    const normalizedCategories = Array.isArray(categories)
+        ? categories.filter((category) => category?.id != null && category?.name)
+        : []
+
     return (
         <div className={`categoryGroup ${className}`.trim()} style={{ width: groupWidth }}>
             <ul className={`${Styles.categoryList} ${listClassName}`.trim()}>
-                {categories.map((category) => (
+                {normalizedCategories.map((category) => (
                     <CategoryChip
                         key={category.id}
                         label={category.name}

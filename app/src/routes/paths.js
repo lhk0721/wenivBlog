@@ -1,3 +1,5 @@
+import { toRoutePostId } from '../utils/postId.js'
+
 export const PATHS = {
     HOME: '/',
     LOGIN: '/login',
@@ -10,5 +12,5 @@ export const PATHS = {
 }
 
 export function getPostViewPath(postId) {
-    return `/post/${postId}`
+    return `/post/${toRoutePostId(postId)}`
 }

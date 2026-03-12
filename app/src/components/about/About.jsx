@@ -14,21 +14,13 @@ import { useAuth } from '../../contexts/AuthContext.jsx'
  *
  * @param {Object} props
  * @param {number|string|null} [props.activeCategoryId=null] 선택된 카테고리 id
+ * @param {{ id: number|string, name: string }[]} [props.categories=[]]
  * @param {(category: { id: number|string, name: string }) => void} [props.onCategorySelect] 카테고리 선택 핸들러
  * @returns {JSX.Element}
  */
-export default function About({ activeCategoryId = null, onCategorySelect }){
+export default function About({ activeCategoryId = null, categories = [], onCategorySelect }){
     const { currentUser, isLoggedIn } = useAuth()
     const { alert } = useAlert()
-    const categories = [
-        { id: 1, name: "Life" },
-        { id: 2, name: "Style" },
-        { id: 3, name: "Tech" },
-        { id: 4, name: "Music" },
-        { id: 5, name: "Sport" },
-        { id: 6, name: "Photo" },
-        { id: 7, name: "Develop"},
-    ]
     const socialLinks = currentUser?.socialLinks ?? {}
     const socialItems = [
         { id: 'Facebook', key: 'facebook', icon: Facebook, label: 'Facebook' },
@@ -77,13 +69,17 @@ export default function About({ activeCategoryId = null, onCategorySelect }){
 
             {/*===== categories =====*/}
             <h2 className={Styles.sectionTitle}>CATEGORIES</h2>
-            <Categories
-                categories = {categories}
-                groupWidth = {288}
-                className={Styles._categories}
-                activeCategoryId={activeCategoryId}
-                onCategoryClick={onCategorySelect}
-            />
+            {categories.length > 0 ? (
+                <Categories
+                    categories = {categories}
+                    groupWidth = {288}
+                    className={Styles._categories}
+                    activeCategoryId={activeCategoryId}
+                    onCategoryClick={onCategorySelect}
+                />
+            ) : (
+                <p className={Styles.description}>API 응답에 카테고리 정보가 없어 목록 필터를 표시하지 않습니다.</p>
+            )}
             
             {/*===== follow =====*/}
             <h2 className={Styles.sectionTitle}>FOLLOW</h2>
