@@ -42,14 +42,14 @@
 
 ```mermaid
 graph TD
-    A[MainLayout] --> B[/]
-    A --> C[/login]
-    A --> D[/register]
-    A --> E[/mypage]
-    A --> F[/post/:postId]
-    A --> G[/write]
-    A --> H[/alert]
-    I[Component Test] --> J[/component-test]
+    A["MainLayout"] --> B["/"]
+    A --> C["/login"]
+    A --> D["/register"]
+    A --> E["/mypage"]
+    A --> F["/post/:postId"]
+    A --> G["/write"]
+    A --> H["/alert"]
+    I["Component Test"] --> J["/component-test"]
 ```
 
 ### 1.3 사용자 흐름
