@@ -1,10 +1,12 @@
 .container{
+    display: block;
     width: 28.8rem;
     height: 40rem;
     border-radius: var(--radius-md);
     cursor: pointer;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
-    background-color: var(--color-bg-canvas);  
+    background-color: var(--color-bg-canvas);
+    overflow: hidden;
 }
 
 .container:hover{

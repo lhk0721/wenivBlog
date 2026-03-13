@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import About from '../../components/about/About.jsx'
 import CardGroup from '../../components/card/CardGroup.jsx'
 import { getBlogList } from '../../api/blog.js'
+import Seo from '../../seo/Seo.jsx'
 import { mapBlogSummary } from '../../utils/blogAdapter.js'
 import { matchesSearchQuery } from '../../utils/search.js'
 import styles from './HomePage.module.css'
@@ -136,6 +137,20 @@ function HomePage() {
 
     return (
         <section className={styles.page}>
+            <Seo
+                title="홈"
+                description="최신 게시글, 카테고리, 작성자 정보를 탐색할 수 있는 개인 블로그 메인 페이지입니다."
+                path="/"
+                type="website"
+                structuredData={{
+                    '@context': 'https://schema.org',
+                    '@type': 'CollectionPage',
+                    name: 'My BLOG',
+                    description: '기록과 기술, 일상의 관찰을 차곡차곡 쌓아가는 개인 블로그입니다.',
+                    inLanguage: 'ko-KR',
+                }}
+            />
+            <h1 className="sr-only">My BLOG 홈</h1>
             <div className={styles.about}>
                 <About
                     activeCategoryId={activeCategory?.id ?? null}
@@ -144,7 +159,7 @@ function HomePage() {
                 />
             </div>
             <div className={styles.cards}>
-                <div className={styles.searchPanel}>
+                <section className={styles.searchPanel} aria-label="게시글 검색">
                     <label className={styles.searchLabel} htmlFor="home-search">POST SEARCH</label>
                     <input
                         id="home-search"
@@ -154,7 +169,7 @@ function HomePage() {
                         value={searchQuery}
                         onChange={(event) => setSearchQuery(event.target.value)}
                     />
-                </div>
+                </section>
                 <CardGroup
                     articleList={isLoading ? [] : filteredArticles.slice(0, visibleCount)}
                     activeCategoryName={activeCategory?.name ?? null}

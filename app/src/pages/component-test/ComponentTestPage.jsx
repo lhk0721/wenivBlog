@@ -21,6 +21,7 @@ import arrowTop from '../../assets/icons/ArrowTop.svg'
 import like from '../../assets/icons/icon-like.svg'
 import likeWhite from '../../assets/icons/icon-like-white.svg'
 import image from '../../assets/icons/icon-image.svg'
+import Seo from '../../seo/Seo.jsx'
 import postImg1 from '../../assets/images/post-img1.png'
 import postImg2 from '../../assets/images/post-img2.png'
 import postImg3 from '../../assets/images/post-img3.png'
@@ -156,11 +157,18 @@ const articleList = [
 
 function ComponentTestPage() {
     return (
-        <PageContainer
-            title="Component Test Page"
-            subtitle="임시 테스트용으로 분리한 컴포넌트 샘플 모음입니다."
-        >
-            <Account type="Mypage" />
+        <>
+            <Seo
+                title="Component Test Page"
+                description="임시 테스트용 컴포넌트 샘플 페이지입니다."
+                path="/component-test"
+                noindex
+            />
+            <PageContainer
+                title="Component Test Page"
+                subtitle="임시 테스트용으로 분리한 컴포넌트 샘플 모음입니다."
+            >
+                <Account type="Mypage" />
 
             <Button
                 variant="primary"
@@ -257,8 +265,9 @@ function ComponentTestPage() {
                 <Write />
             </ContentLayout>
 
-            <CardGroup articleList={articleList} />
-        </PageContainer>
+                <CardGroup articleList={articleList} />
+            </PageContainer>
+        </>
     )
 }
 

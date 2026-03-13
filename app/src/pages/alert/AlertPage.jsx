@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Button from '../../components/buttons/Button.jsx'
 import PageContainer from '../../components/common/PageContainer.jsx'
 import { useAlert } from '../../contexts/AlertContext.jsx'
+import Seo from '../../seo/Seo.jsx'
 import styles from './AlertPage.module.css'
 
 function AlertPage() {
@@ -32,25 +33,28 @@ function AlertPage() {
     }
 
     return (
-        <PageContainer title="Alert" subtitle="시스템 알림">
-            <section className={styles.page}>
-                <div className={styles.actions}>
-                    <Button
-                        variant='solid-primary'
-                        size='md'
-                        text='기본 Alert 열기'
-                        onClick={handleOpenAlert}
-                    />
-                    <Button
-                        variant='solid-negative'
-                        size='md'
-                        text='Confirm 열기'
-                        onClick={handleOpenConfirm}
-                    />
-                </div>
-                <p className={styles.result}>{lastResult}</p>
-            </section>
-        </PageContainer>
+        <>
+            <Seo title="Alert" description="시스템 알림 테스트 페이지입니다." path="/alert" noindex />
+            <PageContainer title="Alert" subtitle="시스템 알림">
+                <section className={styles.page}>
+                    <div className={styles.actions}>
+                        <Button
+                            variant='solid-primary'
+                            size='md'
+                            text='기본 Alert 열기'
+                            onClick={handleOpenAlert}
+                        />
+                        <Button
+                            variant='solid-negative'
+                            size='md'
+                            text='Confirm 열기'
+                            onClick={handleOpenConfirm}
+                        />
+                    </div>
+                    <p className={styles.result}>{lastResult}</p>
+                </section>
+            </PageContainer>
+        </>
     )
 }
 

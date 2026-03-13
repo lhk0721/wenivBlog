@@ -83,7 +83,7 @@ export default function Post({ article, onEdit, onDelete, showActions = false })
     )
 
     return(
-        <div className={Styles.container}>
+        <article className={Styles.container}>
             <header className={Styles.header}>
                 {dateString ? (
                     <Author
@@ -106,7 +106,7 @@ export default function Post({ article, onEdit, onDelete, showActions = false })
                 />
             )}
 
-            <main className={Styles.main}>
+            <div className={Styles.main}>
                 {hasArticle && (
                     <img
                         src={resolvedThumbnail}
@@ -122,8 +122,8 @@ export default function Post({ article, onEdit, onDelete, showActions = false })
                         }}
                     />
                 )}
-                <h2 className={Styles.title}>{title}</h2>
-            </main>
+                <h1 className={Styles.title}>{title}</h1>
+            </div>
 
             <hr className={Styles.divider} />
 
@@ -155,6 +155,6 @@ export default function Post({ article, onEdit, onDelete, showActions = false })
                     </p>
                 )
             })}
-        </div>
+        </article>
     )
 }

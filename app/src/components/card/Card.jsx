@@ -1,6 +1,6 @@
 import Author from '../author/Author'
 import Categories from '../categories/Categories'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { getPostViewPath } from '../../routes/paths.js'
 import fallbackThumbnail1 from '../../assets/images/post-img1.png'
 import fallbackThumbnail2 from '../../assets/images/post-img2.png'
@@ -61,24 +61,8 @@ function renderHighlightedText(value, keyword) {
  * @returns {JSX.Element}
  */
 export default function Card({article, searchQuery = ''}){
-    const navigate = useNavigate()
     const categories = Array.isArray(article?.Categories) ? article.Categories : []
     const resolvedThumbnail = article?.thumbnail || resolveFallbackThumbnail(article?.id)
-
-    const handleOpenPost = () => {
-        if (!article?.id) {
-            return
-        }
-
-        navigate(getPostViewPath(article.id))
-    }
-
-    const handleKeyDown = (event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault()
-            handleOpenPost()
-        }
-    }
 
     const handleThumbnailError = (event) => {
         if (event.currentTarget.dataset.fallbackApplied === 'true') {
@@ -90,38 +74,37 @@ export default function Card({article, searchQuery = ''}){
     }
 
     return(
-        <div
-            className={Styles.container}
-            role="link"
-            tabIndex={0}
-            onClick={handleOpenPost}
-            onKeyDown={handleKeyDown}
-        >
-            <img 
-                src={resolvedThumbnail}
-                alt={article.title ?? 'thumbnail'}
-                className={Styles.thumbnail}
-                onError={handleThumbnailError}
-            />
-            <div className={Styles.contents}>
-                {categories.length > 0 && (
-                    <Categories
-                        categories={categories}
-                        theme='positive'
-                        groupWidth={240} //여기선 줄넘김 없음, overflow: hidden
-                        listClassName={Styles.categoryList}
-                    />
-                )}
-                <h3 className={Styles.title}>{renderHighlightedText(article.title, searchQuery)}</h3>
-                <Author
-                    dateString={article.dateString}
-                    authorName={article.authorName}
-                    authorLabel={renderHighlightedText(article.authorName, searchQuery)}
+        <article>
+            <Link
+                className={Styles.container}
+                to={getPostViewPath(article.id)}
+                aria-label={`${article.title ?? '게시글'} 상세 보기`}
+            >
+                <img
+                    src={resolvedThumbnail}
+                    alt={article.title ?? 'thumbnail'}
+                    className={Styles.thumbnail}
+                    onError={handleThumbnailError}
                 />
-                <p className={Styles.description}>{article.description}</p>
-            </div>
-
-        </div>
+                <div className={Styles.contents}>
+                    {categories.length > 0 && (
+                        <Categories
+                            categories={categories}
+                            theme='positive'
+                            groupWidth={240}
+                            listClassName={Styles.categoryList}
+                        />
+                    )}
+                    <h3 className={Styles.title}>{renderHighlightedText(article.title, searchQuery)}</h3>
+                    <Author
+                        dateString={article.dateString}
+                        authorName={article.authorName}
+                        authorLabel={renderHighlightedText(article.authorName, searchQuery)}
+                    />
+                    <p className={Styles.description}>{article.description}</p>
+                </div>
+            </Link>
+        </article>
 
     )
 }

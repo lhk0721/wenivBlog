@@ -6,6 +6,8 @@ import { deleteBlog, getBlogDetail } from '../../api/blog.js'
 import { useAlert } from '../../contexts/AlertContext.jsx'
 import { useAuth } from '../../contexts/AuthContext.jsx'
 import { PATHS } from '../../routes/paths.js'
+import Seo from '../../seo/Seo.jsx'
+import { buildCanonicalUrl } from '../../seo/seo.js'
 import { mapBlogDetail } from '../../utils/blogAdapter.js'
 import { canManagePost } from '../../utils/postAuthorization.js'
 import pageShell from '../pageShell.module.css'
@@ -134,6 +136,31 @@ function PostViewPage() {
 
     return (
         <section className={`${pageShell.page} ${styles.page}`.trim()}>
+            <Seo
+                title={article?.title ?? '게시글'}
+                description={article?.description ?? '블로그 게시글 상세 페이지입니다.'}
+                path={postId ? `/post/${postId}` : '/post'}
+                type="article"
+                image={article?.thumbnail ?? ''}
+                noindex={!article}
+                structuredData={article
+                    ? {
+                        '@context': 'https://schema.org',
+                        '@type': 'BlogPosting',
+                        headline: article.title,
+                        description: article.description,
+                        image: article.thumbnail || undefined,
+                        author: {
+                            '@type': 'Person',
+                            name: article.authorName,
+                        },
+                        datePublished: article.dateString || undefined,
+                        dateModified: article.dateString || undefined,
+                        mainEntityOfPage: buildCanonicalUrl(`/post/${postId}`),
+                        inLanguage: 'ko-KR',
+                    }
+                    : undefined}
+            />
             <div className={`${pageShell.slot} ${pageShell.content}`.trim()}>
                 <ContentLayout onBackClick={() => navigate(-1)}>
                     <Post

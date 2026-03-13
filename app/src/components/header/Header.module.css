@@ -24,6 +24,10 @@
     opacity: 0;
 }
 
+.logoLink {
+    display: inline-flex;
+}
+
 .logo {
     cursor: pointer;
 }

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import styles from './Header.module.css'
 import Logo from '../../assets/icons/Logo.svg'
 import Profile from '../profile/Profile.jsx'
@@ -48,12 +48,13 @@ export default function Header() {
 
     return (
         <header className={`${styles.header} ${isVisible ? styles.visible : styles.hidden}`.trim()}>
-            <img
-                src={Logo}
-                alt="My Blog"
-                className={styles.logo}
-                onClick={() => navigate(PATHS.HOME)}
-            />
+            <Link to={PATHS.HOME} className={styles.logoLink} aria-label="My BLOG 홈으로 이동">
+                <img
+                    src={Logo}
+                    alt="My Blog"
+                    className={styles.logo}
+                />
+            </Link>
             <div className={styles.headerActions}>
                 {isLoggedIn && <Profile size="sm" onClick={() => navigate(PATHS.MYPAGE)} />}
                 {isLoggedIn && (
